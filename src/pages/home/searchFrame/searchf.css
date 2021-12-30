@@ -1,0 +1,39 @@
+.sfc{
+    border-radius: 1vh;
+    background-color:rgba(92, 174, 255, 0.589);
+    margin: 10vh 10vh;
+}
+.btnc{
+    text-align: center;
+}
+.btnc input{
+    margin-left: 2vh;
+}
+.sframe{
+    border-radius: .5vh;
+    border: 1px solid rgba(97, 96, 96, 0.397);
+    margin: 2vh 2vh 2vh 2vh;
+    padding: 3vh;
+}
+
+.searb{
+   margin: 2vh 2vh 2vh 2vh;
+}
+#search{
+    border: none;
+    font-weight: bold;
+    padding: .9vh;
+    border-radius: .5vh;
+    width: 25vh;
+}
+#search:hover{
+    background-color: lemonchiffon;
+}
+.date{
+    border: 1px solid rgba(34, 33, 33, 0.671);
+    background-color: rgba(92, 174, 255, 0.021);
+}
+
+input[type="radio"]:checked+label{
+    font-weight: bold;
+}
