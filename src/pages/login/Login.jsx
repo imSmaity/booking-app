@@ -1,8 +1,10 @@
 import axios from 'axios'
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { UserState } from '../../routes/PageRoutes'
 
 export default function Login() {
+    const {dispatch}=useContext(UserState)
     const email=useRef(null)
     const password=useRef(null)
     const navigate=useNavigate()
@@ -17,6 +19,7 @@ export default function Login() {
                             const {name,email,flightBookings,hotelBookings}=res.data
                             const user={name,email,flightBookings,hotelBookings}
                             localStorage.setItem('mbuser',JSON.stringify(user))
+                            dispatch({type:"USER",name,payload:true})
                             navigate('/')
                         }
                         else{

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './flights.css'
 
 
@@ -7,7 +8,7 @@ const getTodaysDate=()=>{
     return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
 }
 
-export default function Flights() {
+export default function FlightSearch({travelAirport,destinationAirport}) {
     const [departure,setDeparture]=useState(getTodaysDate)
     return (
         <>
@@ -15,11 +16,11 @@ export default function Flights() {
                 <label  htmlFor="from" className="dropdown-toggle" role="button" data-bs-toggle="dropdown" >FROM</label>
                 <ul className="dropdown-menu" >
                     <li>
-                        <a className="dropdown-item" id='cname'>Goa, India
+                        <div className="dropdown-item" id='cname' onClick={()=>travelAirport("GOI")}>Goa, India
                             <div id='aname'>Dabolim Goa International Airport 
                                 <span id='asname'>GOI</span>
                             </div>
-                        </a>
+                        </div>
                     </li>
                 </ul>
                 <div>
@@ -32,11 +33,11 @@ export default function Flights() {
                 <label  htmlFor="to" className="dropdown-toggle" role="button" data-bs-toggle="dropdown" >TO</label>
                 <ul className="dropdown-menu" >
                     <li>
-                        <a className="dropdown-item" id='cname'>Delhi, India
+                        <div className="dropdown-item" id='cname' onClick={()=>destinationAirport("DEL")}>Delhi, India
                             <div id='aname'>Delhi Airport 
                                 <span id='asname'>DEL</span>
                             </div>
-                        </a>
+                        </div>
                     </li>
                 </ul>
                 <div>

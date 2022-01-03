@@ -6,7 +6,7 @@ const getTodaysDate=()=>{
     return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
 }
 
-export default function Hotels() {
+export default function HotelSearch() {
     const [checkIn,setCheckIn]=useState(getTodaysDate)
 
     return (
