@@ -24,7 +24,7 @@ function PageRoutes() {
                     <Route path="login" element={<Login/>}/>
                     <Route path="forgot_password" element={<ForgotPassword/>}/>
                     <Route path="admin" element={<Admin/>}/>
-                    <Route path="flights/:searchId" element={<Flights/>}/>
+                    <Route path="flights/:classId/:searchId" element={<Flights/>}/>
                     <Route path="hotels/:searchId" element={<Hotels/>}/>
                 </Routes>
             </UserState.Provider>

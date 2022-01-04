@@ -8,8 +8,10 @@ import './searchf.css'
 export default function SearchFrame() {
     const [searchType,setSearchType]=useState("flights")
     const [searchingItems,setSearchingItems]=useState({travelingAirport:'GOI',destinationAirport:'DEL',hotelsBookingCity:'Goa'})
+    const [ticketClass,setTicketClass]=useState("e")
     const flight=useRef("")
     const hotel=useRef("")
+
 
     function inputSearchType(){
         setSearchType(searchType===flight.current.value?hotel.current.value:flight.current.value)
@@ -21,7 +23,13 @@ export default function SearchFrame() {
         setSearchingItems({...searchingItems,'destinationAirport':airportName})
     }
     function searchITEMS(){
-        console.log(searchingItems)
+        if(searchingItems.travelingAirport!==searchingItems.destinationAirport){
+            console.log(searchingItems)
+        }
+        else{
+            alert("Source and destination cannot be same")
+        }
+        
     }
     return (
         <div className='row sfc container'>
@@ -37,14 +45,18 @@ export default function SearchFrame() {
                 <div className='row sframe'>
                 {
                     searchType==="flights"?
-                    <FlightSearch travelAirport={travelAirport} destinationAirport={destinationAirport} />:
+                    <FlightSearch travelAirport={travelAirport} destinationAirport={destinationAirport} setTicketClass={setTicketClass}/>:
                     <HotelSearch/>
                 }
                 </div>
             </div>
             <div className="col-5"></div>
             <div className='col-2 searb'>
-                <Link to={`${searchType}/${searchingItems.travelingAirport}${searchingItems.destinationAirport}`}>
+                <Link to={
+                    searchingItems.travelingAirport!==searchingItems.destinationAirport?
+                    `${searchType}/${ticketClass}/${searchingItems.travelingAirport}${searchingItems.destinationAirport}`:
+                    '/'
+                    }>
                     <button type='button' id='search' onClick={searchITEMS}>SEARCH</button>
                 </Link>
             </div>

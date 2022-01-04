@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import { Input } from '../../components/components'
 
 const planeInputAttribute=[
@@ -54,7 +55,7 @@ const planeInputAttribute=[
     },
     {
         type:'time',
-        displayName:'Arival time',
+        displayName:'Arrival time',
         name:'aTime'
     },
     {
@@ -66,6 +67,11 @@ const planeInputAttribute=[
         type:'time',
         displayName:'Flight duration',
         name:'fDuration'
+    },
+    {
+        type:'text',
+        displayName:'Class',
+        name:'class'
     },
     {
         type:'number',
@@ -89,16 +95,49 @@ const planeInputAttribute=[
     }
 ]
 
-
+function postData(itemData){
+    axios.post(process.env.REACT_APP_STORE_FLIGHTS_DATA,
+        {
+            _id:itemData.trackCode,
+            companyName:itemData.comName,
+            trackingCode:itemData.trackCode,
+            flightsRoute:itemData.flightsRoute,
+            travelAirport:{name:itemData.taName, sName:itemData.tasName,city:itemData.taCity, terminal:itemData.taTerminal},
+            destinationAirport:{name:itemData.daName, sName:itemData.dasName,city:itemData.daCity, terminal:itemData.daTerminal},
+            arrivalTime:itemData.aTime,
+            departureTime:itemData.dTime,
+            flightDuration:itemData.fDuration,
+            class:itemData.class,
+            baseFare:itemData.bFare,
+            baggageCheckIn:itemData.bCheckIn,
+            baggageCabin:itemData.bCabin,
+            meal:itemData.meal    
+        }
+    )
+    .then(alert("Flight data successfully submited."))
+}
 
 function Admin() {
-    
+    const [itemData,setItemData]=useState({
+        flightsRoute:'',comName:'',trackCode:'', taName:'',tasName:'',taCity:'',taTerminal:'',
+        daName:'',dasName:'',daCity:'',daTerminal:'',aTime:'',dTime:'',fDuration:'',
+        class:'',bFare:'',bCheckIn:'',bCabin:'',meal:''
+    })
+
+    function inputData(e){
+        setItemData({...itemData,[e.target.name]:e.target.value})
+    }
     function submitData(){
-    
+        postData(itemData)
     }
     return (
         <div>
             <center>
+                <label>Flights Route: </label>
+                <select name="flightsRoute" className='mt-2' onChange={(e)=>inputData(e)}>
+                    <option value="">Select</option>
+                    <option value="GOIDEL">GOA to DELHI</option>
+                </select>
                 {
                     planeInputAttribute.map((val,index)=>{
                         return(
@@ -108,6 +147,7 @@ function Admin() {
                                     type={val.type}
                                     name={val.name}
                                     className="mt-3"
+                                    onChange={(e)=>inputData(e)}
                                 />
                             </div>
                         )
