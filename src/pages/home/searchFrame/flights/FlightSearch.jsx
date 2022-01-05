@@ -105,8 +105,8 @@ export default function FlightSearch({travelAirport,destinationAirport,setTicket
                 <label  htmlFor="dept">CLASS:</label>
                 <div className='mt-2'>
                     <select name="class" className='date' id="dateset" onChange={(e)=>setTicketClass(e.target.value)}>
-                        <option value="e">Economy</option>
-                        <option value="b">Business</option>
+                        <option value="Economy">Economy</option>
+                        <option value="Business">Business</option>
                     </select>
                 </div>
             </div>

@@ -6,7 +6,8 @@ import {
     Home,
     Login,
     SignUp, 
-    Admin
+    Admin,
+    FlightTicketBook
 } from '../pages/pages'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import reducer, { initialstate } from '../hooks/UseReducer'
@@ -24,8 +25,10 @@ function PageRoutes() {
                     <Route path="login" element={<Login/>}/>
                     <Route path="forgot_password" element={<ForgotPassword/>}/>
                     <Route path="admin" element={<Admin/>}/>
-                    <Route path="flights/:classId/:searchId" element={<Flights/>}/>
                     <Route path="hotels/:searchId" element={<Hotels/>}/>
+                    <Route path="flights/:classId/:searchId" element={<Flights/>}/>
+                    <Route path="flights/:classId/:searchId/:flightId" element={<FlightTicketBook/>}/>
+                    
                 </Routes>
             </UserState.Provider>
         </BrowserRouter>

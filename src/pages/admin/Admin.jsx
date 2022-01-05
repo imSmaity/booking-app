@@ -64,7 +64,7 @@ const planeInputAttribute=[
         name:'dTime'
     },
     {
-        type:'time',
+        type:'text',
         displayName:'Flight duration',
         name:'fDuration'
     },
@@ -137,6 +137,7 @@ function Admin() {
                 <select name="flightsRoute" className='mt-2' onChange={(e)=>inputData(e)}>
                     <option value="">Select</option>
                     <option value="GOIDEL">GOA to DELHI</option>
+                    <option value="DELGOI">DELHI to GOA</option>
                 </select>
                 {
                     planeInputAttribute.map((val,index)=>{

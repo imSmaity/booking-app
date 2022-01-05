@@ -8,7 +8,7 @@ import './searchf.css'
 export default function SearchFrame() {
     const [searchType,setSearchType]=useState("flights")
     const [searchingItems,setSearchingItems]=useState({travelingAirport:'GOI',destinationAirport:'DEL',hotelsBookingCity:'Goa'})
-    const [ticketClass,setTicketClass]=useState("e")
+    const [ticketClass,setTicketClass]=useState("Economy")
     const flight=useRef("")
     const hotel=useRef("")
 
@@ -23,13 +23,9 @@ export default function SearchFrame() {
         setSearchingItems({...searchingItems,'destinationAirport':airportName})
     }
     function searchITEMS(){
-        if(searchingItems.travelingAirport!==searchingItems.destinationAirport){
-            console.log(searchingItems)
-        }
-        else{
+        if(searchingItems.travelingAirport===searchingItems.destinationAirport){
             alert("Source and destination cannot be same")
         }
-        
     }
     return (
         <div className='row sfc container'>

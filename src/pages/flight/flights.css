@@ -1,0 +1,11 @@
+.fl{
+    border: 1px solid rgba(73, 71, 71, 0.473);
+    border-radius: .5vh;
+    margin-top: 3vh;
+    padding: 2vh;
+    background-color: rgba(169, 169, 169, 0.178);
+}
+.fl button{
+    margin-top: 3vh;
+    background-color: rgb(252, 190, 77);
+}

@@ -1,0 +1,36 @@
+.tic{
+    border: 1px solid rgba(148, 146, 146, 0.541);
+    margin-left: 2vh;
+    padding: 3vh;
+}
+.fare{
+    border: 1px solid rgba(148, 146, 146, 0.541);
+}
+.ticInfo{
+    border: 1px solid rgba(148, 146, 146, 0.541);
+    padding: 2vh;
+}
+
+#chText{
+    font-size: small;
+    color: rgb(126, 125, 125);
+    padding: 1vh;
+}
+#ticHe{
+    margin-top: -3vh;
+    border-bottom: 1px solid darkgray;
+}
+#ticHes{
+    margin-top: -3vh;
+    border-bottom:1px dashed darkgray;
+}
+#city{
+    padding-top: 2vh;
+}
+#ts{
+    padding: 2vh;
+    text-align: right;
+}
+.ta{
+    border-top:1px dashed darkgray;
+}
