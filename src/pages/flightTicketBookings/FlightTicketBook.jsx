@@ -5,6 +5,8 @@ import FareSummary from './FareSummary'
 import Ticket from './Ticket'
 import './flightTicketBook.css'
 import axios from 'axios'
+import ImportantInformation from './ImportantInformation'
+import TravellerDetails from './TravellerDetails'
 
 function FlightTicketBook() {
     const [flightDetails,setFlightDetails]=useState(null)
@@ -30,6 +32,16 @@ function FlightTicketBook() {
             <div className="col-md-4 col-12">
                 <FareSummary 
                     flightDetails={flightDetails} 
+                    loading={loading} 
+                />
+            </div>
+            <div className=' mt-3 col-12'>
+                <ImportantInformation
+                    loading={loading} 
+                />
+            </div>
+            <div className=' mt-3 col-12'>
+                <TravellerDetails
                     loading={loading} 
                 />
             </div>

@@ -1,5 +1,5 @@
 .tic{
-    border: 1px solid rgba(148, 146, 146, 0.541);
+    border: 1px solid black;
     margin-left: 2vh;
     padding: 3vh;
 }
@@ -33,4 +33,32 @@
 }
 .ta{
     border-top:1px dashed darkgray;
+}
+.iInfo{
+    border: 1px solid darkgrey;
+    margin-left: 2vh;
+    padding: 3vh;
+    background-color: lemonchiffon;
+}
+.radioBtn{
+    margin-left: 2vh;
+}
+.td{
+    border: 1px solid black;
+    margin-left: 2vh;
+    padding: 3vh;
+}
+#tdH{
+    font-weight: bold;
+    border-bottom: 1px solid  darkgray;
+}
+.tdFrame{
+    border: 1px solid darkgrey;
+    margin-left: 2vh;
+    padding: 3vh;
+}
+.addBtn button{
+    border: none;
+    color: blue;
+    background-color: white;
 }
