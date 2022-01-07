@@ -1,48 +1,18 @@
 import React, { useState } from 'react'
-import { Input } from '../../components/components'
+import Adult from './passenger/Adult'
+import Child from './passenger/Child'
+import Infant from './passenger/Infant'
+import TicketSent from './passenger/ticketSent/TicketSent'
 
-const adultAttribute=[
-    {
-        placeholder:'First & Middle Name',
-        type:'text',
-        name:'fmName'
-    },
-    {
-        placeholder:'Last Name',
-        type:'text',
-        name:'lName'
-    },
-    {
-        type:'radio',
-        value:'MALE',
-        name:'gender'
-    },
-    {
-        type:'radio',
-        value:'FEMALE',
-        name:'gender'
-    }
-]
-function NewAdult(){
-    return(
-        adultAttribute.map((val,index)=>{
-            if(val.type==='radio'){
-                return(
-                    <span key={index} className='radioBtn'>
-                        <label>{val.value}</label>
-                        <Input type={val.type} className='radioBtn' name={val.name}/>
-                    </span>
-                )
-            }
-            else{
-                return <Input key={index} className='radioBtn mt-2' type={val.type} placeholder={val.placeholder} name={val.name} />
-            }
-        })
-    )
-}
 
-function TravellerDetails({loading}) {
+function TravellerDetails({loading,setInfo}) {
     const [adultCount,setAdultCount]=useState([1])
+    const [childCount,setChildCount]=useState([1])
+    const [infantCount,setInfantCount]=useState([1])
+    const [adultValue,setAdultValue]=useState(false)
+    const [childValue,setChildValue]=useState(false)
+    const [infantValue,setInfantValue]=useState(false)
+
     function addNewAdult(){
         if(adultCount.length+1<=15){
             setAdultCount([...adultCount,adultCount[adultCount.length-1]+1])
@@ -51,29 +21,73 @@ function TravellerDetails({loading}) {
             alert('Number of adults cannot be more than 15')
         }
     }
+
+
+    function addNewChild(){
+
+        if(childCount.length+1<=10){
+            setChildCount([...childCount,childCount[childCount.length-1]+1])
+        }
+        else{
+            alert('Number of child cannot be more than 10')
+        }
+    }
+
+    function addNewInfant(){
+
+        if(infantCount.length+1<=5){
+            setInfantCount([...infantCount,infantCount[infantCount.length-1]+1])
+        }
+        else{
+            alert('Number of infant cannot be more than 5')
+        }
+    }
+    function _continue(){
+        if(adultValue!==false || childValue!==false){
+            console.log(adultValue)
+            console.log(childValue)
+            console.log(infantValue)
+            setInfo(true)
+        }
+        else{
+            alert("Please select minimum one adult or child details.")
+        }
+    }
+
     return (
         <>
             {
                 loading?
-                <div className='td'>
-                    <div id="tdH" >TRAVELLER DETAILS</div>
-                    <div style={{fontSize:'small'}}>NOTE: Please make sure you enter the Name as per your govt. photo id.</div> 
-                    <div className='tdFrame mt-3'>
-                        <div>{
-                            adultCount.map((val)=>{
-                                return ( 
-                                    <div className='mt-4' key={val}>
-                                        <div>{`ADULT ${val}:`}</div>
-                                        {NewAdult()}
-                                    </div>
-                                )
-                            })
-                        }</div>
-                        <div className='addBtn'>
-                            <button className='mt-4' type='button' onClick={addNewAdult}>+ ADD NEW ADULT</button>
-                        </div>
+                <>
+                    <div className='td'>
+                        <div id="tdH" >TRAVELLER DETAILS</div>
+                        <div style={{fontSize:'small'}}>NOTE: Please make sure you enter the Name as per your govt. photo id.</div> 
+                        <div className='mt-3'>{`ADULT (12 Yrs+)`}</div>
+                        <Adult 
+                            adultCount={adultCount}  
+                            addNewAdult={addNewAdult}
+                            adultValue={adultValue}
+                            setAdultValue={setAdultValue}
+                        />
+                        <div className='mt-3'>{`CHILD (2-12 Yrs)`}</div>
+                        <Child 
+                            childCount={childCount}  
+                            addNewChild={addNewChild}
+                            childValue={childValue}
+                            setChildValue={setChildValue}
+                        />
+                        <div className='mt-3'>{`INFANT (< 2 Yrs)`}</div>
+                        <Infant
+                            infantCount={infantCount}  
+                            addNewInfant={addNewInfant}
+                            infantValue={infantValue}
+                            setInfantValue={setInfantValue}
+                        />
+                        <div className='mt-5' style={{borderTop:'1px solid darkgray'}}>Booking details will be sent to</div>
+                        <div><TicketSent/></div>
                     </div>
-                </div>:
+                    <button type='submit' className='btn btn-primary mt-2 continueBtn' onClick={_continue}>Continue</button>
+                </>:
                 <div></div>
             }
             

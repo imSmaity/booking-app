@@ -8,7 +8,7 @@ export default function Ticket({flightDetails,loading}) {
             {
                 loading?
                     <>
-                        <div id='city'>{`${flightDetails.travelAirport.city} - ${flightDetails.destinationAirport.city}`}</div>
+                        <div id='city' className='mt-3'>{`${flightDetails.travelAirport.city} - ${flightDetails.destinationAirport.city}`}</div>
 
                         <div className='row container ticInfo' >
                             <div className="col-2">

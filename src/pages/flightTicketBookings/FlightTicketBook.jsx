@@ -7,10 +7,12 @@ import './flightTicketBook.css'
 import axios from 'axios'
 import ImportantInformation from './ImportantInformation'
 import TravellerDetails from './TravellerDetails'
+import PaymentDetails from './PaymentDetails'
 
 function FlightTicketBook() {
     const [flightDetails,setFlightDetails]=useState(null)
     const [loading,setLoading]=useState(false)
+    const [info,setInfo]=useState(false)
     const path=useParams()
 
     useEffect(()=>{
@@ -40,9 +42,25 @@ function FlightTicketBook() {
                     loading={loading} 
                 />
             </div>
-            <div className=' mt-3 col-12'>
-                <TravellerDetails
+            <div className=' mt-5 col-12'>
+                {
+                    info?
+                    <div className='tdFrame mt-1'>
+                        <div>TRAVELLER DETAILS
+                        <span className='addBtn' style={{marginLeft:'10vh'}}>
+                            <button type='button' onClick={()=>setInfo(false)}>edit</button>
+                        </span></div>
+                    </div>:
+                    <TravellerDetails
+                        loading={loading}
+                        setInfo={setInfo} 
+                    />
+                }
+            </div>
+            <div className=' mt-5 col-12' style={{marginBottom:'5vh'}}>
+                <PaymentDetails
                     loading={loading} 
+                    info={info}
                 />
             </div>
         </div>
