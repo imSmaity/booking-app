@@ -1,12 +1,7 @@
 
-import {useState } from "react"
 
-
-
-export default function Adult(){
-    const [adult,setAdult]=useState([{fmName:'',lName:'',gender0:''}])
+export default function Adult({adult,setAdult}){
     
-
     function changeValue(e,i){
         const newValue=[...adult]
         newValue[i][e.target.name]=e.target.value
@@ -28,7 +23,6 @@ export default function Adult(){
         setAdult(deleteField)
     }
     
-
     return (
         <div className='tdFrame mt-1'>
             {
@@ -40,15 +34,20 @@ export default function Adult(){
                             <input type='text' value={val.lName} className='radioBtn' name='lName' onChange={(e)=>changeValue(e,index)} />
                             <span  className='radioBtn'>
                                 <label >{'Male'}</label>
-                                <input type='radio' value="Male"  name={`gender${index}`}  id="gender" onChange={(e)=>changeValue(e,index)} />
+                                <input type='radio' value="Male"  name={`gender${index}`}  id="gender" onChange={(e)=>changeValue(e,index)} 
+                                    checked={val[`gender${index}`]==="Male"?true:false}
+                                />
                                 <label id="gender">{'Female'}</label>
-                                <input type='radio' value="Female"  name={`gender${index}`}  id="gender"  onChange={(e)=>changeValue(e,index)} />
+                                <input type='radio' value="Female"  name={`gender${index}`}  id="gender"  onChange={(e)=>changeValue(e,index)} 
+                                    checked={val[`gender${index}`]==="Female"?true:false}  
+                                />
                             </span>
-                            <span 
+                            <button 
                                 id='symbol'
                                 title="remove" 
+                                disabled={adult.length>1?false:true}
                                 onClick={()=>removeAdult(index)}>❌
-                            </span>
+                            </button>
                         </div>
                     )
                 })

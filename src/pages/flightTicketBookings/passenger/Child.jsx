@@ -1,13 +1,6 @@
 
-import { useState } from "react"
 
-
-
-export default function Child(){
-    
-    
-    const [child,setChild]=useState([])
-    
+export default function Child({child,setChild}){
 
     function changeValue(e,i){
         const newValue=[...child]
@@ -17,7 +10,7 @@ export default function Child(){
 
     function addNewChild(){
         if(child.length<10){
-            setChild([...child,{fmName:'',lName:'',[`gender${child.length}`]:''}])
+            setChild([...child,{fmName:'',lName:'',[`cgender${child.length}`]:''}])
         }
         else{
             alert('Number of childs cannot be more than 10')
@@ -42,9 +35,13 @@ export default function Child(){
                             <input type='text' value={val.lName} className='radioBtn' name='lName' onChange={(e)=>changeValue(e,index)} />
                             <span  className='radioBtn'>
                                 <label >{'Male'}</label>
-                                <input type='radio' value="Male"  name={`gender${index}`}  id="gender" onChange={(e)=>changeValue(e,index)} />
+                                <input type='radio' value="Male"  name={`cgender${index}`}  id="gender" onChange={(e)=>changeValue(e,index)} 
+                                    checked={val[`cgender${index}`]==="Male"?true:false}
+                                />
                                 <label id="gender">{'Female'}</label>
-                                <input type='radio' value="Female"  name={`gender${index}`}  id="gender"  onChange={(e)=>changeValue(e,index)} />
+                                <input type='radio' value="Female"  name={`cgender${index}`}  id="gender"  onChange={(e)=>changeValue(e,index)} 
+                                    checked={val[`cgender${index}`]==="Female"?true:false}
+                                />
                             </span>
                             <span 
                                 id='symbol'

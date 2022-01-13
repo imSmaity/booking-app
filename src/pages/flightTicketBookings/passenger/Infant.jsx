@@ -1,11 +1,6 @@
 
-import { useState } from "react"
 
-
-
-export default function Infant(){
-    const [infant,setInfant]=useState([])
-    
+export default function Infant({infant,setInfant}){
 
     function changeValue(e,i){
         const newValue=[...infant]

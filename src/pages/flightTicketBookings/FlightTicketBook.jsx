@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Header } from '../../components/components'
 import FareSummary from './FareSummary'
@@ -9,10 +9,18 @@ import ImportantInformation from './ImportantInformation'
 import TravellerDetails from './TravellerDetails'
 import PaymentDetails from './PaymentDetails'
 
+
+export const Passenger=createContext("")
 function FlightTicketBook() {
     const [flightDetails,setFlightDetails]=useState(null)
     const [loading,setLoading]=useState(false)
     const [info,setInfo]=useState(false)
+    
+    const [adult,setAdult]=useState([{fmName:'',lName:'',gender0:''}])
+    const [child,setChild]=useState([])
+    const [infant,setInfant]=useState([])
+
+
     const path=useParams()
 
     useEffect(()=>{
@@ -51,17 +59,21 @@ function FlightTicketBook() {
                             <button type='button' onClick={()=>setInfo(false)}>edit</button>
                         </span></div>
                     </div>:
-                    <TravellerDetails
-                        loading={loading}
-                        setInfo={setInfo} 
-                    />
+                    <Passenger.Provider value={{adult,setAdult,child,setChild,infant,setInfant}}>
+                        <TravellerDetails
+                            loading={loading}
+                            setInfo={setInfo} 
+                        />
+                    </Passenger.Provider>
                 }
             </div>
             <div className=' mt-5 col-12' style={{marginBottom:'5vh'}}>
+               
                 <PaymentDetails
                     loading={loading} 
                     info={info}
                 />
+                
             </div>
         </div>
     )
