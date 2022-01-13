@@ -34,6 +34,6 @@
     background-color: rgba(92, 174, 255, 0.021);
 }
 
-input[type="radio"]:checked+label{
+.btnc input[type="radio"]:checked+label{
     font-weight: bold;
 }

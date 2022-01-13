@@ -68,3 +68,14 @@
 .continueBtn{
     margin-left: 2vh;
 }
+#gender{
+    margin-left: 1vh;
+}
+#symbol{
+    margin-left: 5vh;
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 2vh;
+    font-weight:900;
+    border: 1px solid rgb(71, 71, 71);
+}
