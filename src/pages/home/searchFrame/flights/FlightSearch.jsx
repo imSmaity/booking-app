@@ -1,5 +1,6 @@
-import React, {useState } from 'react'
+import React, {useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { InputDate } from '../../../../routes/PageRoutes'
 import { airportData } from './airportDatabase'
 import './flights.css'
 
@@ -52,23 +53,24 @@ function TO({destinationAirport,displayDestinationAirport}){
     )
 }
 
-const getTodaysDate=()=>{
-    const d=new Date()
-    return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
-}
+// const getTodaysDate=()=>{
+//     const d=new Date()
+//     return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
+// }
 
 export default function FlightSearch({travelAirport,destinationAirport,setTicketClass}) {
-    const [departure,setDeparture]=useState(getTodaysDate)
+
     const [displayTAirport,setDisplayTAirport]=useState({name:'Dabolim Goa International Airport',location:'Goa, India'})
     const [displayDAirport,setDisplayDAirport]=useState({name:'Indira Gandhi International Airport',location:'Delhi, India'})
-    
+    const {date,setDate}=useContext(InputDate)
+
     function displayTravelAirport(name,location){
         setDisplayTAirport({name:name,location:location})
     }
     function displayDestinationAirport(name,location){
         setDisplayDAirport({name:name,location:location})
     }
-    
+
     return (
         <>
             <div className="col-md-4 col-12">
@@ -98,7 +100,7 @@ export default function FlightSearch({travelAirport,destinationAirport,setTicket
             <div className="col-md-3 col-12">
                 <label  htmlFor="dept">DEPARTURE:</label>
                 <div className='mt-2'>
-                    <input type='date' id='dateset' value={departure} className='date' onChange={(e)=>setDeparture(e.target.value)}/>
+                    <input type='date' id='dateset' className='date' onChange={(e)=>setDate({...date,travelDate:e.target.value})}/>
                 </div>
             </div>
             <div className="col-md-2 col-12">

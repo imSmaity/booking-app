@@ -6,6 +6,7 @@ import Home from "./home/Home"
 import Login from "./login/Login"
 import SignUp from "./signup/SignUp"
 import FlightTicketBook from './flightTicketBookings/FlightTicketBook'
+import HotelDataStore from './admin/HotelDataStore'
 
 
-export {Home, SignUp ,Login, ForgotPassword, Flights,Hotels, Admin, FlightTicketBook}
+export {Home, SignUp ,Login, ForgotPassword, Flights,Hotels, Admin, HotelDataStore, FlightTicketBook}

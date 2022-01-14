@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import {Link} from 'react-router-dom'
+import { InputDate } from '../../../routes/PageRoutes'
 import FlightSearch from './flights/FlightSearch'
 import HotelSearch from './hotels/HotelSearch'
 
@@ -9,9 +10,10 @@ export default function SearchFrame() {
     const [searchType,setSearchType]=useState("flights")
     const [searchingItems,setSearchingItems]=useState({travelingAirport:'GOI',destinationAirport:'DEL',hotelsBookingCity:'Goa'})
     const [ticketClass,setTicketClass]=useState("Economy")
+    const {date}=useContext(InputDate)
+
     const flight=useRef("")
     const hotel=useRef("")
-
 
     function inputSearchType(){
         setSearchType(searchType===flight.current.value?hotel.current.value:flight.current.value)
@@ -22,9 +24,26 @@ export default function SearchFrame() {
     function destinationAirport(airportName){
         setSearchingItems({...searchingItems,'destinationAirport':airportName})
     }
+
+    function hotelsBookingCity(city){
+        setSearchingItems({...searchingItems,hotelsBookingCity:city})
+    }
+
     function searchITEMS(){
-        if(searchingItems.travelingAirport===searchingItems.destinationAirport){
-            alert("Source and destination cannot be same")
+        if(searchType==='flights'){
+            if(searchingItems.travelingAirport===searchingItems.destinationAirport){
+                alert("Source and destination cannot be same")
+            }
+        }
+        else{
+            if(date.checkInDate!=='' && date.checkOutDate!==''){   
+                if(date.checkInDate===date.checkOutDate){
+                    alert('Check-in and check-out date cannot be same.')
+                }
+            }
+            else{
+                alert('Please provide check-in and check-out date.')
+            }
         }
     }
     return (
@@ -41,20 +60,41 @@ export default function SearchFrame() {
                 <div className='row sframe'>
                 {
                     searchType==="flights"?
-                    <FlightSearch travelAirport={travelAirport} destinationAirport={destinationAirport} setTicketClass={setTicketClass}/>:
-                    <HotelSearch/>
+                    <FlightSearch 
+                        travelAirport={travelAirport} 
+                        destinationAirport={destinationAirport} 
+                        setTicketClass={setTicketClass}
+                    />:
+                    <HotelSearch 
+                        hotelsBookingCity={hotelsBookingCity}
+                    />
                 }
                 </div>
             </div>
             <div className="col-5"></div>
             <div className='col-2 searb'>
+            {
+                searchType==="flights"?
                 <Link to={
-                    searchingItems.travelingAirport!==searchingItems.destinationAirport?
-                    `${searchType}/${ticketClass}/${searchingItems.travelingAirport}${searchingItems.destinationAirport}`:
+                    searchingItems.travelingAirport===searchingItems.destinationAirport?
+                    '/':
+                    `${searchType}/${ticketClass}/${searchingItems.travelingAirport}${searchingItems.destinationAirport}`
+                    
+                 }>
+                    <button type='button' id='search' onClick={searchITEMS}>SEARCH</button>
+                </Link>:
+                <Link to={
+                    date.checkInDate!=='' && date.checkOutDate!==''?
+                        date.checkInDate===date.checkOutDate?
+                        '/':
+                        `${searchType}/${searchingItems.hotelsBookingCity}`:
                     '/'
-                    }>
+                }>
                     <button type='button' id='search' onClick={searchITEMS}>SEARCH</button>
                 </Link>
+
+            }
+                
             </div>
             <div className="col-5"></div>
         </div>

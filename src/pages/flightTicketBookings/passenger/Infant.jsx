@@ -31,7 +31,7 @@ export default function Infant({infant,setInfant}){
                 infant.map((val,index)=>{
                     return ( 
                         <div className='mt-3' key={index}>
-                            <div>{`Infant ${index+1}:`}</div>
+                            <div>{`INFANT ${index+1}:`}</div>
                             <input type='text' value={val.fmName} className='radioBtn' name='fmName' onChange={(e)=>changeValue(e,index)} />
                             <input type='text' value={val.lName} className='radioBtn' name='lName' onChange={(e)=>changeValue(e,index)} />
                             <span 
