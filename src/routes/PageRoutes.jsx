@@ -8,7 +8,9 @@ import {
     SignUp, 
     Admin,
     FlightTicketBook,
-    HotelDataStore
+    HotelDataStore,
+    RoomSelect,
+    BookHotel
 } from '../pages/pages'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import reducer, { initialstate } from '../hooks/UseReducer'
@@ -32,6 +34,8 @@ function PageRoutes() {
                         <Route path="admin/hotelsDB" element={<HotelDataStore/>}/>
                         <Route path="hotels/:searchId" element={<Hotels/>}/>
                         <Route path="flights/:classId/:searchId" element={<Flights/>}/>
+                        <Route path="hotels/:searchId/room_select/:hotelId" element={<RoomSelect/>}/>
+                        <Route path="hotels/:searchId/room_select/:hotelId/payment" element={<BookHotel/>}/>
                         <Route path="flights/:classId/:searchId/:flightId" element={<FlightTicketBook/>}/>
                         
                     </Routes>

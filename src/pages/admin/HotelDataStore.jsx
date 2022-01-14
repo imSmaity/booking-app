@@ -58,7 +58,7 @@ function HotelDataStore() {
     }
     function submitData(){
         axios.post(process.env.REACT_APP_STORE_HOTELS_DATA,hotelData)
-        .then(alert("Data stored"))
+        .then(alert("Data are stored"))
     }
     return (
         <center>

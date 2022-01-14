@@ -1,0 +1,10 @@
+.hof{
+    margin-top: 5vh;
+    padding: 2vh;
+    border-radius: 2vh;
+    border: 1px solid black;
+    text-decoration: none;
+}
+.hof:hover{
+    border: 3px solid rgb(86, 150, 247);
+}
