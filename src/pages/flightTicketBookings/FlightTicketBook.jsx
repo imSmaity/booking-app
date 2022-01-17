@@ -9,6 +9,31 @@ import ImportantInformation from './ImportantInformation'
 import TravellerDetails from './TravellerDetails'
 import PaymentDetails from './PaymentDetails'
 
+function getPriceSummary(adult,child,_class,price){
+    console.log(adult.length,child.length,_class,price)
+    const serviceFee=91*(adult.length+child.length)
+    const userFee=300*(adult.length+child.length)
+    const donation=10*(adult.length+child.length)
+    const adultPrice=price*adult.length
+    const childPrice=(price*(80/100))*child.length
+    const GSTe=(adultPrice+childPrice)*(5/100)
+    const GSTb=(adultPrice+childPrice)*(12/100)
+
+    if(_class==="Economy"){
+            return {adult:adult.length,child:child.length,adultBaseFare:adultPrice,
+            childBaseFare:childPrice,serviceFee:serviceFee,
+            userFee:userFee,GST:GSTe,donation:donation,
+            totalAmmount:GSTe+adultPrice+childPrice+serviceFee+userFee+donation
+        }
+    }
+    else{
+        return {adult:adult.length,child:child.length,adultBaseFare:adultPrice,
+            childBaseFare:childPrice,serviceFee:serviceFee,
+            userFee:userFee,GST:GSTb,donation:donation,
+            totalAmmount:GSTb+adultPrice+childPrice+serviceFee+userFee+donation
+        }
+    }
+}
 
 export const Passenger=createContext("")
 function FlightTicketBook() {
@@ -19,7 +44,7 @@ function FlightTicketBook() {
     const [adult,setAdult]=useState([{fmName:'',lName:'',gender0:''}])
     const [child,setChild]=useState([])
     const [infant,setInfant]=useState([])
-
+    const [priceSummary,setPriceSummary]=useState({adult:'',child:'',adultBaseFare:'',childBaseFare:'',serviceFee:'',userFee:'',GST:'',donation:'',totalAmmount:''})
 
     const path=useParams()
 
@@ -30,6 +55,12 @@ function FlightTicketBook() {
             setLoading(true)
         })
     },[])
+    useEffect(()=>{
+        if(loading){
+            setPriceSummary(getPriceSummary(adult,child,flightDetails.class,flightDetails.baseFare))
+        }
+    },[adult,child,loading])
+
     return (
         <div className='row'>
             <div className='col-12 hac'><Header/></div>
@@ -41,7 +72,7 @@ function FlightTicketBook() {
             </div>
             <div className="col-md-4 col-12">
                 <FareSummary 
-                    flightDetails={flightDetails} 
+                    priceSummary={priceSummary}
                     loading={loading} 
                 />
             </div>
@@ -72,6 +103,7 @@ function FlightTicketBook() {
                 <PaymentDetails
                     loading={loading} 
                     info={info}
+                    priceSummary={priceSummary}
                 />
                 
             </div>

@@ -1,46 +1,49 @@
 import React from 'react'
 import { Loading } from '../../components/components'
 
-export default function FareSummary({flightDetails,loading}) {
+export default function FareSummary({priceSummary,loading}) {
+
     return (
         <div className='fare tic mt-3'>
-            <div id='ticHes'>FARE SUMMARY</div>
+            <div id='ticHes'>FARE SUMMARY
+            {
+                priceSummary.child===0?
+                <div className='text-black-50'>Travelers {priceSummary.adult} Adults</div>:
+                <div className='text-black-50'>Travelers {priceSummary.adult} Adults | {priceSummary.child} Children</div>
+            }
+            </div>
             <div className='row tgs'>
                 {
                     loading?
                     <>
-                        <div className="col-6" >Base Fare</div>
-                        <div className="col-6" id="ts">{`₹${flightDetails.baseFare.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</div>
-                        <div className="col-6" >Passenger Service Fee</div>
-                        <div className="col-6" id="ts">₹91</div>
-                        <div className="col-6">User Development Fee</div>
-                        <div className="col-6" id="ts">₹300</div>
-                        <div className="col-6">GST</div>
-                       
                         {
-                            flightDetails.class==="Business"?
-                            <div className="col-6" id="ts">₹{(flightDetails.baseFare)*(12/100)}</div>:
-                            <div className="col-6" id="ts">₹{(flightDetails.baseFare)*(5/100)}</div>
+                            priceSummary.child===0?
+                            <>
+                                <div className="col-6" >Adult Base Fare</div>
+                                <div className="col-6" id="ts">{`₹${priceSummary.adultBaseFare.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</div>
+                            </>:
+                            <>
+                                <div className="col-6" >Adult Base Fare</div>
+                                <div className="col-6" id="ts">{`₹${priceSummary.adultBaseFare.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</div>
+                                <div className="col-6" >Child Base Fare</div>
+                                <div className="col-6" id="ts">{`₹${priceSummary.childBaseFare.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</div>
+                            </>
                         }
+                        
+                        <div className="col-6" >Passenger Service Fee</div>
+                        <div className="col-6" id="ts">₹{priceSummary.serviceFee}</div>
+                        <div className="col-6">User Development Fee</div>
+                        <div className="col-6" id="ts">₹{priceSummary.userFee}</div>
+                        <div className="col-6">GST</div>
+
+                        <div className="col-6" id="ts">₹{priceSummary.GST}</div>
                       
                         <div className="col-6">Charity Donation</div>
-                        <div  className="col-6" id="ts">₹10</div>
+                        <div  className="col-6" id="ts">₹{priceSummary.donation}</div>
                         <div className="col-6 ta">Total Amount</div>
-                        {
-                            
-                            flightDetails.class==="Business"?
-                            <div className="col-6 ta" id="ts">₹
-                                {(flightDetails.baseFare+91+300+(flightDetails.baseFare)*(12/100)+10)
-                                    .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                                }
-                            </div>:
-                            <div className="col-6 ta" id="ts">₹
-                                {(flightDetails.baseFare+91+300+(flightDetails.baseFare)*(5/100)+10)
-                                    .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                                }
-                            </div>
-                        
-                        }
+
+                        <div className="col-6 ta" id="ts">₹{priceSummary.totalAmmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+
                     </>:
                     <Loading/>
                 }

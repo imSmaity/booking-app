@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 
 function HotelList({loading,hotelsData}) {
@@ -9,7 +9,7 @@ function HotelList({loading,hotelsData}) {
             {
                 hotelsData.map((hotel,index)=>{
                     return(
-                        <Link to={`room_select/${hotel._id}`} key={index} className="row container hof">
+                        <Link to={`${hotel._id}`} key={index} className="row container hof">
                             <div className="col-3 hi">
                                 <img className=" img-fluid" src={hotel.image} alt="hotel"/>
                             </div>

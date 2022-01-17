@@ -78,7 +78,7 @@ export default function SearchFrame() {
                 <Link to={
                     searchingItems.travelingAirport===searchingItems.destinationAirport?
                     '/':
-                    `${searchType}/${ticketClass}/${searchingItems.travelingAirport}${searchingItems.destinationAirport}`
+                    `${searchType}/${ticketClass}/${searchingItems.travelingAirport}${searchingItems.destinationAirport}/${JSON.stringify(date)}`
                     
                  }>
                     <button type='button' id='search' onClick={searchITEMS}>SEARCH</button>
@@ -87,7 +87,7 @@ export default function SearchFrame() {
                     date.checkInDate!=='' && date.checkOutDate!==''?
                         date.checkInDate===date.checkOutDate?
                         '/':
-                        `${searchType}/${searchingItems.hotelsBookingCity}`:
+                        `${searchType}/${searchingItems.hotelsBookingCity}/${JSON.stringify(date)}`:
                     '/'
                 }>
                     <button type='button' id='search' onClick={searchITEMS}>SEARCH</button>

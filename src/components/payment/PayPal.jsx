@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-export default function PayPal() {
+export default function PayPal({ammount}) {
 
     const paypal=useRef()
 
@@ -14,7 +14,7 @@ export default function PayPal() {
                     description: "Cool looking table",
                     amount: {
                       currency_code: "CAD",
-                      value: 1.0,
+                      value: (ammount/59).toFixed(2),
                     },
                   },
                 ],

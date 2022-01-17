@@ -1,0 +1,25 @@
+.mr{
+    border: 1px solid black;
+    border-radius: .5vh;
+    padding: 5px;
+}
+.al{
+    text-align: right;
+}
+.ar{
+    text-align: left;
+}
+.ab{
+    font-weight: bold;
+    border-bottom: 1px solid darkgray;
+    margin-bottom: 1vh;
+}
+.bo{
+    font-weight: bold;
+}
+#ed span{
+    margin-left: 10vh;
+} 
+.pay{
+    background-color: rgb(231, 236, 245);
+}

@@ -12,33 +12,38 @@ import {
     RoomSelect,
     BookHotel
 } from '../pages/pages'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom'
 import reducer, { initialstate } from '../hooks/UseReducer'
 
 const UserState=createContext(null)
 export const InputDate=createContext(null)
+export const GuestDetails=createContext(null)
+
 function PageRoutes() {
     const [state, dispatch] = useReducer(reducer, initialstate())
     const [date,setDate]=useState({travelDate:'',checkInDate:'',checkOutDate:''})
-
+    const [guest,setGuest]=useState([{fname:'',lname:''}])
+   
     return (
         <BrowserRouter>
             <UserState.Provider value={{state,dispatch}}>
                 <InputDate.Provider value={{date,setDate}}>
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        <Route path="signup" element={<SignUp/>}/>
-                        <Route path="login" element={<Login/>}/>
-                        <Route path="forgot_password" element={<ForgotPassword/>}/>
-                        <Route path="admin" element={<Admin/>}/>
-                        <Route path="admin/hotelsDB" element={<HotelDataStore/>}/>
-                        <Route path="hotels/:searchId" element={<Hotels/>}/>
-                        <Route path="flights/:classId/:searchId" element={<Flights/>}/>
-                        <Route path="hotels/:searchId/room_select/:hotelId" element={<RoomSelect/>}/>
-                        <Route path="hotels/:searchId/room_select/:hotelId/payment" element={<BookHotel/>}/>
-                        <Route path="flights/:classId/:searchId/:flightId" element={<FlightTicketBook/>}/>
-                        
-                    </Routes>
+                    <GuestDetails.Provider value={{guest,setGuest}}>
+                        <Routes>
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="signup" element={<SignUp/>}/>
+                            <Route path="login" element={<Login/>}/>
+                            <Route path="forgot_password" element={<ForgotPassword/>}/>
+                            <Route path="admin" element={<Admin/>}/>
+                            <Route path="admin/hotelsDB" element={<HotelDataStore/>}/>
+                            <Route path="hotels/:searchId/:query" element={<Hotels/>}/>
+                            <Route path="flights/:classId/:searchId/:query" element={<Flights/>}/>
+                            <Route path="hotels/:searchId/:query/:hotelId" element={<RoomSelect/>}/>
+                            <Route path="flights/:classId/:searchId/:query/:flightId" element={<FlightTicketBook/>}/>
+                            <Route path="hotels/:searchId/:query/:hotelId/payment" element={<BookHotel/>}/>
+                            
+                        </Routes>
+                    </GuestDetails.Provider>
                 </InputDate.Provider>
             </UserState.Provider>
         </BrowserRouter>
