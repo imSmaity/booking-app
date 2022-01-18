@@ -2,8 +2,8 @@ import React, {useState } from 'react'
 import './ticket.css'
 
 export default function PrintTicket() {
-    const bookings=JSON.parse(localStorage.getItem('mbuser')).bookings
-    const [ticket]=useState(bookings[bookings.length-1])
+    const flightBookings=JSON.parse(localStorage.getItem('mbuser')).flightBookings
+    const [ticket]=useState(flightBookings[flightBookings.length-1])
 
     
 

@@ -10,12 +10,23 @@ export default function PayPal({ammount,bookingDetails}) {
     function BookingDataStore(status,data){
       const userData=JSON.parse(localStorage.getItem("mbuser"))
       if(status==="COMPLETED" && userData!==null){
-          userData.bookings.push(data)
+        if(data.bookingType==="H"){
+          userData.hotelBookings.push(data)
+          axios.post(process.env.REACT_APP_UPDATE_USER,userData)
+          .then(()=>{
+              localStorage["mbuser"]=JSON.stringify(userData)
+              navig('/hotel_book_confirm')
+          })
+        }
+        else{
+          userData.flightBookings.push(data)
           axios.post(process.env.REACT_APP_UPDATE_USER,userData)
           .then(()=>{
               localStorage["mbuser"]=JSON.stringify(userData)
               navig('/ticket_confirm')
           })
+        }
+          
       }
       else{
           console.log("Payment failed!")

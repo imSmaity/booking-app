@@ -10,6 +10,7 @@ import HotelDataStore from './admin/HotelDataStore'
 import RoomSelect from './hotel/roomSelect/RoomSelect'
 import BookHotel from './hotelBooking/BookHotel'
 import ConfirmTicket from './flightTicketBookings/confirmTicket/ConfirmTicket'
+import ConfirmHotelBooking from './hotelBooking/confirmHotelBook/ConfirmHotelBooking'
 
 
 export {
@@ -24,5 +25,6 @@ export {
     Admin,
     HotelDataStore,
     FlightTicketBook,
-    ConfirmTicket
+    ConfirmTicket,
+    ConfirmHotelBooking
 }

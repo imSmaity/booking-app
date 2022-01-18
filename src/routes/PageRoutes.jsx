@@ -11,7 +11,8 @@ import {
     HotelDataStore,
     RoomSelect,
     BookHotel,
-    ConfirmTicket
+    ConfirmTicket,
+    ConfirmHotelBooking
 } from '../pages/pages'
 import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom'
 import reducer, { initialstate } from '../hooks/UseReducer'
@@ -38,6 +39,7 @@ function PageRoutes() {
                             <Route path="forgot_password" element={<ForgotPassword/>}/>
                             <Route path="admin" element={<Admin/>}/>
                             <Route path="ticket_confirm" element={<ConfirmTicket/>}/>
+                            <Route path="hotel_book_confirm" element={<ConfirmHotelBooking/>}/>
                             <Route path="admin/hotelsDB" element={<HotelDataStore/>}/>
                             <Route path="hotels/:searchId/:query" element={<Hotels/>}/>
                             <Route path="flights/:classId/:searchId/:query" element={<Flights/>}/>

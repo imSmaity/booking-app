@@ -65,9 +65,11 @@ function FlightTicketBook() {
     useEffect(()=>{
         if(loading){
             setBookingDetails({
+                bookingType:'F',
                 flightDetails,
                 passengerDetails:{adult:adult,child:child,infant:infant},
-                priceSummary
+                priceSummary,
+                query:JSON.parse(path.query)
             })
         }
     },[adult,child,infant,priceSummary,loading])
