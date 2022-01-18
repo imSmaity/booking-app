@@ -1,62 +1,15 @@
 import React, {useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { InputDate } from '../../../../routes/PageRoutes'
-import { airportData } from './airportDatabase'
+
 import './flights.css'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
+import FROM from './FROM'
+import TO from './TO'
 
 
-function FROM({travelAirport,displayTravelAirport}){
-    return(
-        <ul className="dropdown-menu" >
-            <li>
-            {
-                airportData.map((airport,index)=>{
-                    return(
-                        <div className="dropdown-item" id='cname' key={index} 
-                            onClick={()=>{travelAirport(airport.sortName) 
-                            displayTravelAirport(airport.name,airport.location)}}>{airport.location}
-                            <div id='aname'>{airport.name} 
-                                <span id='asname'>{airport.sortName}</span>
-                            </div>
-                        </div>
-                    )
-                })
-                
-            }
-                
-            </li>
-        </ul>
-    )
-}
 
-function TO({destinationAirport,displayDestinationAirport}){
-    return(
-        <ul className="dropdown-menu" >
-            <li>
-            {
-                airportData.map((airport,index)=>{
-                    return(
-                        <div className="dropdown-item" id='cname' key={index} 
-                            onClick={()=>{destinationAirport(airport.sortName)
-                            displayDestinationAirport(airport.name,airport.location)}}>
-                            {airport.location}
-                            <div id='aname'>{airport.name} 
-                                <span id='asname'>{airport.sortName}</span>
-                            </div>
-                        </div>
-                    )
-                })
-                
-            }
-            </li>
-        </ul>
-    )
-}
-
-// const getTodaysDate=()=>{
-//     const d=new Date()
-//     return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
-// }
 
 export default function FlightSearch({travelAirport,destinationAirport,setTicketClass}) {
 
@@ -70,7 +23,7 @@ export default function FlightSearch({travelAirport,destinationAirport,setTicket
     function displayDestinationAirport(name,location){
         setDisplayDAirport({name:name,location:location})
     }
-
+    
     return (
         <>
             <div className="col-md-4 col-12">
@@ -100,7 +53,7 @@ export default function FlightSearch({travelAirport,destinationAirport,setTicket
             <div className="col-md-3 col-12">
                 <label  htmlFor="dept">DEPARTURE:</label>
                 <div className='mt-2'>
-                    <input type='date' id='dateset' className='date' onChange={(e)=>setDate({...date,travelDate:e.target.value})}/>
+                    <DatePicker selected={date.travelDate} id='dateset'  minDate={moment().toDate()} onChange={(e)=>setDate({...date,travelDate:e})}/>
                 </div>
             </div>
             <div className="col-md-2 col-12">

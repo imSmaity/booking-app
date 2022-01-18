@@ -2,7 +2,7 @@ import React from 'react'
 import { Paypal } from '../../components/components'
 
 
-function PaymentDetails({loading,info,priceSummary}) {
+function PaymentDetails({loading,info,bookingDetails}) {
 
     return (
         <div className='td'>
@@ -13,7 +13,7 @@ function PaymentDetails({loading,info,priceSummary}) {
                         info?
                         <>
                             <div id='tdH'>PAYMENT DETAILS</div>
-                            <Paypal ammount={priceSummary.totalAmmount}/>
+                            <Paypal ammount={bookingDetails.priceSummary.totalAmmount} bookingDetails={bookingDetails}/>
                         </>:
                         <div>PAYMENT DETAILS</div>
                     }

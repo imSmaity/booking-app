@@ -10,7 +10,8 @@ import {
     FlightTicketBook,
     HotelDataStore,
     RoomSelect,
-    BookHotel
+    BookHotel,
+    ConfirmTicket
 } from '../pages/pages'
 import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom'
 import reducer, { initialstate } from '../hooks/UseReducer'
@@ -20,8 +21,9 @@ export const InputDate=createContext(null)
 export const GuestDetails=createContext(null)
 
 function PageRoutes() {
+
     const [state, dispatch] = useReducer(reducer, initialstate())
-    const [date,setDate]=useState({travelDate:'',checkInDate:'',checkOutDate:''})
+    const [date,setDate]=useState({travelDate:new Date(),checkInDate:new Date(),checkOutDate:new Date()})
     const [guest,setGuest]=useState([{fname:'',lname:''}])
    
     return (
@@ -35,6 +37,7 @@ function PageRoutes() {
                             <Route path="login" element={<Login/>}/>
                             <Route path="forgot_password" element={<ForgotPassword/>}/>
                             <Route path="admin" element={<Admin/>}/>
+                            <Route path="ticket_confirm" element={<ConfirmTicket/>}/>
                             <Route path="admin/hotelsDB" element={<HotelDataStore/>}/>
                             <Route path="hotels/:searchId/:query" element={<Hotels/>}/>
                             <Route path="flights/:classId/:searchId/:query" element={<Flights/>}/>

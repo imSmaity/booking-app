@@ -18,11 +18,11 @@ function HotelInfo({hotelData}) {
             </div>
             <div className="col-4 p-2 mt-3">
                 <div className='bo'>Check In</div>
-                <div>{date.checkInDate}</div>
+                <div>{new Date(date.checkInDate).toDateString()}</div>
             </div>
             <div className="col-4 p-2 mt-3">
                 <div className='bo'>Check Out</div>
-                <div>{date.checkOutDate}</div>
+                <div>{new Date(date.checkOutDate).toDateString()}</div>
             </div>
             <div className="col-4 p-2 mt-3">
                 <div className='bo'>Guests</div>

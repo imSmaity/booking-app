@@ -16,6 +16,8 @@ function BookHotel() {
     const [loading,setLoading]=useState(false)
     const [proceedToPayment,setToPayment]=useState(false)
     const [roomPrice,setRoomPrice]=useState({room:'',night:'',price:'',tax:'',payable:''})
+    const [bookingDetails, setBookingDetails]=useState(null)
+
     const path=useParams()
     const query=JSON.parse(path.query)
 
@@ -27,13 +29,18 @@ function BookHotel() {
         })
     },[])
 
+    useEffect(()=>{
+        if(loading){
+            setBookingDetails({bookingType:"H" ,hotelData, guest, roomPrice, query})
+        }
+    },[guest,roomPrice,loading])
     
     useEffect(()=>{
 
         if(loading){
             let room=0
-            const co=query.checkOutDate[8]+query.checkOutDate[9]
-            const ci=query.checkInDate[8]+query.checkInDate[9]
+            const co=new Date(query.checkOutDate).getDate()
+            const ci=new Date(query.checkInDate).getDate()
             const night=co-ci
 
             if(guest.length<=hotelData.gPerRoom){
@@ -86,7 +93,7 @@ function BookHotel() {
                     {
                         proceedToPayment?
                         <center>
-                            <Payment roomPrice={roomPrice}/>
+                            <Payment bookingDetails={bookingDetails}/>
                         </center>:
                         <div className='mr mt-3 ab'>Payment Options</div>
                     }

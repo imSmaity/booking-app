@@ -37,7 +37,7 @@ export default function SearchFrame() {
         }
         else{
             if(date.checkInDate!=='' && date.checkOutDate!==''){   
-                if(date.checkInDate===date.checkOutDate){
+                if(new Date(date.checkInDate).toLocaleDateString()===new Date(date.checkOutDate).toLocaleDateString()){
                     alert('Check-in and check-out date cannot be same.')
                 }
             }
@@ -85,7 +85,7 @@ export default function SearchFrame() {
                 </Link>:
                 <Link to={
                     date.checkInDate!=='' && date.checkOutDate!==''?
-                        date.checkInDate===date.checkOutDate?
+                        new Date(date.checkInDate).toLocaleDateString()===new Date(date.checkOutDate).toLocaleDateString()?
                         '/':
                         `${searchType}/${searchingItems.hotelsBookingCity}/${JSON.stringify(date)}`:
                     '/'

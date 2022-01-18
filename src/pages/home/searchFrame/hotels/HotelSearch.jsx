@@ -1,4 +1,6 @@
+import moment from 'moment'
 import React, { useContext, useState } from 'react'
+import DatePicker from 'react-datepicker'
 import { InputDate } from '../../../../routes/PageRoutes'
 import './hotels.css'
 
@@ -48,13 +50,13 @@ export default function HotelSearch({hotelsBookingCity}) {
             <div className="col-sm-4 col-12">
                 <label  htmlFor="dept">CHECK-IN:</label>
                 <div className='mt-2'>
-                    <input type='date' id='dateset' value={date.checkInDate} className='date' onChange={(e)=>setDate({...date,checkInDate:e.target.value})}/>
+                    <DatePicker selected={date.checkInDate} id='dateset'  minDate={moment().toDate()} onChange={(e)=>setDate({...date,checkInDate:e})}/>
                 </div>
             </div>
             <div className="col-sm-4 col-12">
                 <label  htmlFor="dept">CHECK-OUT:</label>
                 <div className='mt-2'>
-                    <input type='date' id='dateset' value={date.checkOutDate} className='date' onChange={(e)=>setDate({...date,checkOutDate:e.target.value})}/>
+                    <DatePicker selected={date.checkOutDate} id='dateset'  minDate={moment().toDate()} onChange={(e)=>setDate({...date,checkOutDate:e})}/>
                 </div>
             </div>
         </>

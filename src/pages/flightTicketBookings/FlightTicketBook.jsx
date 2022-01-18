@@ -10,7 +10,6 @@ import TravellerDetails from './TravellerDetails'
 import PaymentDetails from './PaymentDetails'
 
 function getPriceSummary(adult,child,_class,price){
-    console.log(adult.length,child.length,_class,price)
     const serviceFee=91*(adult.length+child.length)
     const userFee=300*(adult.length+child.length)
     const donation=10*(adult.length+child.length)
@@ -46,6 +45,8 @@ function FlightTicketBook() {
     const [infant,setInfant]=useState([])
     const [priceSummary,setPriceSummary]=useState({adult:'',child:'',adultBaseFare:'',childBaseFare:'',serviceFee:'',userFee:'',GST:'',donation:'',totalAmmount:''})
 
+    const [bookingDetails,setBookingDetails]=useState({})
+
     const path=useParams()
 
     useEffect(()=>{
@@ -60,6 +61,17 @@ function FlightTicketBook() {
             setPriceSummary(getPriceSummary(adult,child,flightDetails.class,flightDetails.baseFare))
         }
     },[adult,child,loading])
+
+    useEffect(()=>{
+        if(loading){
+            setBookingDetails({
+                flightDetails,
+                passengerDetails:{adult:adult,child:child,infant:infant},
+                priceSummary
+            })
+        }
+    },[adult,child,infant,priceSummary,loading])
+
 
     return (
         <div className='row'>
@@ -103,7 +115,7 @@ function FlightTicketBook() {
                 <PaymentDetails
                     loading={loading} 
                     info={info}
-                    priceSummary={priceSummary}
+                    bookingDetails={bookingDetails}
                 />
                 
             </div>

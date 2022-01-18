@@ -1,0 +1,12 @@
+.ths{
+    border-bottom: 3px double black;
+    padding: 2px;
+}
+.trs{
+    font-weight: bold;
+    color: orange;
+}
+.tabTr{
+    border-bottom: 1px solid black;
+    padding: 2px;
+}
