@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
-export default function ConfirmPage() {
-    const hotelBookings=JSON.parse(localStorage.getItem('mbuser')).hotelBookings
-    const [ticket]=useState(hotelBookings[hotelBookings.length-1])
+export default function ConfirmPage({ticket}) {
+    
 
     return (
         <div className='row container'>

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import {Header} from '../../../components/components'
 import { UserState } from '../../../routes/PageRoutes'
 import { Login } from '../../pages'
@@ -9,6 +9,8 @@ import {useReactToPrint} from 'react-to-print'
 
 function ConfirmHotelBooking() {
     const {state}=useContext(UserState)
+    const hotelBookings=JSON.parse(localStorage.getItem('mbuser')).hotelBookings
+    const [ticket]=useState(hotelBookings[hotelBookings.length-1])
     const componentRef=useRef(null)
 
     const handlePrint=useReactToPrint({
@@ -24,7 +26,7 @@ function ConfirmHotelBooking() {
                 <div className='col-12 m-3'>
                     <button onClick={handlePrint}>Print</button>
                 </div>
-                <div className='col-12' ref={componentRef}><ConfirmPage/></div>
+                <div className='col-12' ref={componentRef}><ConfirmPage ticket={ticket}/></div>
             </>:
             <Login/>
         }

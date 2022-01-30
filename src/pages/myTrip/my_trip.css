@@ -1,0 +1,47 @@
+.myt button{
+    border: none;
+    background-color: rgb(124, 236, 19);
+    padding: 5px;
+}
+#sbf{
+    border: 2px solid gray;
+    font-weight: bold;
+}
+.myt button:hover{
+    background-color: rgb(138, 247, 37);
+}
+#tash{
+    text-align: left;
+}
+.hr{
+    margin-top: 2vh;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+}
+.sbs{
+    padding: 5px;
+    margin-top: 2vh;
+    border-top: 1px solid gray;
+}
+.sbs button{
+    border: none;
+    background-color: white;
+    color: blue;
+}
+.sbs button:hover{
+    color: gray;
+}
+#shh{
+    font-weight: bold;
+}
+#hideTicket{
+    display: none;
+}
+#book{
+    font-size: small;
+}
+.confi{
+    font-size: 2.1vh;
+    color: green;
+}

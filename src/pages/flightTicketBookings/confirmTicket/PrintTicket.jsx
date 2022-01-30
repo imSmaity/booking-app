@@ -69,7 +69,7 @@ export default function PrintTicket() {
                     <div className="col-1">{ticket.flightDetails.companyName}</div>
                 </div>
             </div>
-            <div className='col-12 mt-3'>{`${ticket.flightDetails.flightDuration} | ${ticket.flightDetails.travelAirport.name}, 
+            <div className='col-12 mt-3'>{`${Math.floor(ticket.flightDetails.flightDuration/60)}h ${ticket.flightDetails.flightDuration%60}m | ${ticket.flightDetails.travelAirport.name}, 
             ${ticket.flightDetails.travelAirport.sName} - ${ticket.flightDetails.destinationAirport.name}, 
             ${ticket.flightDetails.destinationAirport.sName}`}</div>
             <strong className='col-12 mt-5 tabTr p-2'>

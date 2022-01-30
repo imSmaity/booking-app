@@ -137,7 +137,17 @@ function Admin() {
                 <select name="flightsRoute" className='mt-2' onChange={(e)=>inputData(e)}>
                     <option value="">Select</option>
                     <option value="GOIDEL">GOA to DELHI</option>
+                    <option value="GOICCU">GOA to Kolkata</option>
+                    <option value="GOIBOM">GOA to Mumbai</option>
                     <option value="DELGOI">DELHI to GOA</option>
+                    <option value="DELCCU">DELHI to Kolkata</option>
+                    <option value="DELBOM">DELHI to Mumbai</option>
+                    <option value="CCUGOI">Kolkata to GOA</option>
+                    <option value="CCUBOM">Kolkata to Mumbai</option>
+                    <option value="CCUDEL">Kolkata to DELHI</option>
+                    <option value="BOMGOI">Mumbai to Goa</option>
+                    <option value="BOMDEL">Mumbai to Delhi</option>
+                    <option value="BOMCCU">Mumbai to Kolkata</option>
                 </select>
                 {
                     planeInputAttribute.map((val,index)=>{

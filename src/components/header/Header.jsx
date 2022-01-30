@@ -14,7 +14,9 @@ export default function Header() {
             <Link to="/"  className='col-4' style={{textDecoration:'none'}}>
                 <h3 >myDestination</h3>
             </Link>
-            <div className='col-2'><p >My trip</p></div>
+            <div className='col-2'>
+                <Link to={'/my_trip'} >My trip</Link>
+            </div>
                 {
                     state.payload?
                     <>

@@ -66,6 +66,7 @@ function FlightTicketBook() {
         if(loading){
             setBookingDetails({
                 bookingType:'F',
+                bookingDate:new Date().toDateString(),
                 flightDetails,
                 passengerDetails:{adult:adult,child:child,infant:infant},
                 priceSummary,

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState } from 'react'
+import React, { createContext, useEffect, useReducer, useState } from 'react'
 import { 
     Flights,
     Hotels,
@@ -12,21 +12,31 @@ import {
     RoomSelect,
     BookHotel,
     ConfirmTicket,
-    ConfirmHotelBooking
+    ConfirmHotelBooking,
+    MyTrip
 } from '../pages/pages'
-import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, useNavigate} from 'react-router-dom'
 import reducer, { initialstate } from '../hooks/UseReducer'
 
 const UserState=createContext(null)
 export const InputDate=createContext(null)
 export const GuestDetails=createContext(null)
 
+function Redirect({to}){
+    const navigate=useNavigate()
+    useEffect(()=>{
+        navigate(to)   
+    })
+    return null
+}
+
+
 function PageRoutes() {
 
     const [state, dispatch] = useReducer(reducer, initialstate())
     const [date,setDate]=useState({travelDate:new Date(),checkInDate:new Date(),checkOutDate:new Date()})
     const [guest,setGuest]=useState([{fname:'',lname:''}])
-   
+
     return (
         <BrowserRouter>
             <UserState.Provider value={{state,dispatch}}>
@@ -34,18 +44,19 @@ function PageRoutes() {
                     <GuestDetails.Provider value={{guest,setGuest}}>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
-                            <Route path="signup" element={<SignUp/>}/>
-                            <Route path="login" element={<Login/>}/>
+                            <Route path="signup" element={state.payload? <Redirect to={-1}/>:<SignUp/>}/>
+                            <Route path="login" element={state.payload? <Redirect to={-1}/>:<Login/>}/>
                             <Route path="forgot_password" element={<ForgotPassword/>}/>
                             <Route path="admin" element={<Admin/>}/>
-                            <Route path="ticket_confirm" element={<ConfirmTicket/>}/>
-                            <Route path="hotel_book_confirm" element={<ConfirmHotelBooking/>}/>
+                            <Route path="my_trip" element={state.payload? <MyTrip/>:<Redirect to='/login'/>}/>
+                            <Route path="ticket_confirm" element={state.payload?<ConfirmTicket/>:<Redirect to='/login'/>}/>
+                            <Route path="hotel_book_confirm" element={state.payload?<ConfirmHotelBooking/>:<Redirect to='/login'/>}/>
                             <Route path="admin/hotelsDB" element={<HotelDataStore/>}/>
                             <Route path="hotels/:searchId/:query" element={<Hotels/>}/>
                             <Route path="flights/:classId/:searchId/:query" element={<Flights/>}/>
                             <Route path="hotels/:searchId/:query/:hotelId" element={<RoomSelect/>}/>
-                            <Route path="flights/:classId/:searchId/:query/:flightId" element={<FlightTicketBook/>}/>
-                            <Route path="hotels/:searchId/:query/:hotelId/payment" element={<BookHotel/>}/>
+                            <Route path="flights/:classId/:searchId/:query/:flightId" element={state.payload? <FlightTicketBook/>:<Redirect to='/login'/>}/>
+                            <Route path="hotels/:searchId/:query/:hotelId/payment" element={state.payload? <BookHotel/>:<Redirect to='/login'/>}/>
                             
                         </Routes>
                     </GuestDetails.Provider>

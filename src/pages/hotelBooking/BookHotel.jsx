@@ -31,10 +31,10 @@ function BookHotel() {
 
     useEffect(()=>{
         if(loading){
-            setBookingDetails({bookingType:"H" ,hotelData, guest, roomPrice, query})
+            setBookingDetails({bookingType:"H",bookingDate:new Date().toDateString() ,hotelData, guest, roomPrice, query})
         }
     },[guest,roomPrice,loading])
-    
+
     useEffect(()=>{
 
         if(loading){
@@ -60,6 +60,19 @@ function BookHotel() {
         }
     },[guest,loading])
 
+    function validation(){
+        let state=false
+        for(let i=0;i<guest.length;i++){
+            if(guest[i].fname==='' || guest[i].lname===''){
+                alert('Please fill all the guest details')
+                state=false
+                i=guest.length
+            }
+            else{state=true}
+        }
+        return state
+    }
+
     return (
         <div className='row'>
             {
@@ -84,7 +97,11 @@ function BookHotel() {
                                 <center>
                                     <GuestsDetails/>
                                 </center>
-                                <button type='button' style={{marginLeft:'9vh'}} className='mt-2' onClick={()=>setToPayment(true)}>Proceed To Payment Options</button>
+                                <button type='button' style={{marginLeft:'9vh'}} className='mt-2' onClick={
+                                    ()=>{
+                                        setToPayment( validation())
+                                    }
+                                }>Proceed To Payment Options</button>
                             </>
                         }
                         

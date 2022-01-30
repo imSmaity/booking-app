@@ -20,7 +20,7 @@ function FlightList({loading,flightsData,path}){
                                 <div>{flight.arrivalTime}</div>
                             </div>
                             <div className="col-2">
-                                <div>{flight.flightDuration}</div>
+                                <div>{`${Math.floor(flight.flightDuration/60)} h ${flight.flightDuration%60} m`}</div>
                             </div>
                             <div className="col-3">
                                 <div>{flight.destinationAirport.sName}

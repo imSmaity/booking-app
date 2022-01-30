@@ -25,7 +25,7 @@ export default function Ticket({flightDetails,loading}) {
                                 <div id="chText">{flightDetails.travelAirport.city}</div>
                             </div>
                             <div className="col-2">
-                                <div>{flightDetails.flightDuration}</div>
+                                <div>{`${Math.floor(flightDetails.flightDuration/60)} h ${flightDetails.flightDuration%60} m`}</div>
                                 <div id="chText">Flight Duration</div>
                             </div>
                             <div className="col-4">
