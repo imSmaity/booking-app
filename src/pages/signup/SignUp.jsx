@@ -46,7 +46,7 @@ function submitData(userData,msg,navigate){
 function validation(userData){
     if(userData.name !== '' && userData.dob !== '' && userData.email !== '' && 
     userData.password !== '' && userData.rPassword !== '' ){
-        if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userData.email)){
+        if(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(userData.email)){
             if(userData.password.length>=8){
                 if(userData.password===userData.rPassword){
                     return {valid:true,msg:'Successfully registered'}
