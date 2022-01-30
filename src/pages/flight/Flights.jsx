@@ -48,7 +48,7 @@ function Flights() {
                 setLoading(true)
             }
         )
-    },[])
+    },[path.searchId])
     
     useEffect(()=>{
         if(sort === 'duration'){
@@ -60,7 +60,7 @@ function Flights() {
         else if(sort === 'hTOl'){
             setFlightsData(priceHLWiseSort(flightsData,'baseFare'))
         }
-    },[sort])
+    },[sort,flightsData])
 
     return (
         <>

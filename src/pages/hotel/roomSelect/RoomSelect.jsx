@@ -18,7 +18,7 @@ function RoomSelect() {
             setHotelData(res.data)
             setLoading(true)
         })
-    },[])
+    },[path])
 
 
     return (

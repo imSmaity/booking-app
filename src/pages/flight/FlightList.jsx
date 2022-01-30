@@ -39,6 +39,9 @@ function FlightList({loading,flightsData,path}){
                         </div>
                     )
                 }
+                else{
+                    return <div></div>
+                }
             })
             
         )

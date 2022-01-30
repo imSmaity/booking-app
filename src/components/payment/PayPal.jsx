@@ -7,32 +7,6 @@ export default function PayPal({ammount,bookingDetails}) {
     const paypal=useRef()
     const navig=useNavigate()
 
-    function BookingDataStore(status,data){
-      const userData=JSON.parse(localStorage.getItem("mbuser"))
-      if(status==="COMPLETED" && userData!==null){
-        if(data.bookingType==="H"){
-          userData.hotelBookings.push(data)
-          axios.post(process.env.REACT_APP_UPDATE_USER,userData)
-          .then(()=>{
-              localStorage["mbuser"]=JSON.stringify(userData)
-              navig('/hotel_book_confirm')
-          })
-        }
-        else{
-          userData.flightBookings.push(data)
-          axios.post(process.env.REACT_APP_UPDATE_USER,userData)
-          .then(()=>{
-              localStorage["mbuser"]=JSON.stringify(userData)
-              navig('/ticket_confirm')
-          })
-        }
-          
-      }
-      else{
-          console.log("Payment failed!")
-      }
-    
-    }
     useEffect(()=>{
         window.paypal.Buttons({
         createOrder: (data, actions, err) => {
@@ -51,14 +25,33 @@ export default function PayPal({ammount,bookingDetails}) {
             },
             onApprove: async (data, actions) => {
               const order = await actions.order.capture();
+              const userData=JSON.parse(localStorage.getItem("mbuser"))
 
-              BookingDataStore(order.status,bookingDetails)
+              if(order.status==="COMPLETED" && userData!==null){
+                  if(data.bookingType==="H"){
+                    userData.hotelBookings.push(data)
+                    axios.post(process.env.REACT_APP_UPDATE_USER,userData)
+                    .then(()=>{
+                        localStorage["mbuser"]=JSON.stringify(userData)
+                        navig('/hotel_book_confirm')
+                    })
+                  }
+                  else{
+                    userData.flightBookings.push(data)
+                    axios.post(process.env.REACT_APP_UPDATE_USER,userData)
+                    .then(()=>{
+                        localStorage["mbuser"]=JSON.stringify(userData)
+                        navig('/ticket_confirm')
+                    })
+                  }
+                    
+              }
             },
             onError:(err) => {
               console.log(err);
             },
         }).render(paypal.current)
-    },[])
+    },[ammount,bookingDetails,navig])
 
     return <div ref={paypal} className='mt-5'></div>
 }

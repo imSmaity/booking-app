@@ -38,7 +38,7 @@ function Hotels() {
             setHotelsData(res.data)
             setLoading(true)
         })
-    },[])
+    },[path])
 
     useEffect(()=>{
         if(sort==='lTOh'){
@@ -47,7 +47,7 @@ function Hotels() {
         else if(sort==='hTOl'){
             setHotelsData(priceHLWiseSort(hotelsData,'price'))
         }
-    },[sort])
+    },[sort,hotelsData])
 
     return (
         <div className='row'>

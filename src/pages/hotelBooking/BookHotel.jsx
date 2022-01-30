@@ -27,13 +27,13 @@ function BookHotel() {
             setHotelData(res.data)
             setLoading(true)
         })
-    },[])
+    },[path])
 
     useEffect(()=>{
         if(loading){
             setBookingDetails({bookingType:"H",bookingDate:new Date().toDateString() ,hotelData, guest, roomPrice, query})
         }
-    },[guest,roomPrice,loading])
+    },[guest,roomPrice,loading,hotelData,query])
 
     useEffect(()=>{
 
@@ -58,7 +58,7 @@ function BookHotel() {
                 {room:room,night:night,price:price,tax:price*(18/100),payable:price+price*(18/100)}      
             )
         }
-    },[guest,loading])
+    },[guest,loading,hotelData.gPerRoom,hotelData.price,query.checkInDate,query.checkOutDate])
 
     function validation(){
         let state=false

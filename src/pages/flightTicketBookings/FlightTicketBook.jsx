@@ -55,12 +55,12 @@ function FlightTicketBook() {
             setFlightDetails(res.data)
             setLoading(true)
         })
-    },[])
+    },[path.searchId,path.flightId])
     useEffect(()=>{
         if(loading){
             setPriceSummary(getPriceSummary(adult,child,flightDetails.class,flightDetails.baseFare))
         }
-    },[adult,child,loading])
+    },[adult,child,loading,flightDetails.class,flightDetails.baseFare])
 
     useEffect(()=>{
         if(loading){
@@ -73,7 +73,7 @@ function FlightTicketBook() {
                 query:JSON.parse(path.query)
             })
         }
-    },[adult,child,infant,priceSummary,loading])
+    },[adult,child,infant,priceSummary,loading,flightDetails,path.query])
 
 
     return (
