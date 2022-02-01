@@ -27,10 +27,12 @@ export default function Login() {
                         }
                         else{
                             alert("Your email or password is incorrect, please try again.")
+                            setLoading(false)
                         }
                     }
                     else{
                         alert("Your email or password is incorrect, please try again.")
+                        setLoading(false)
                     }
                 }
             )
