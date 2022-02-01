@@ -39,6 +39,7 @@ export default function Login() {
         }
         else{
             alert("please fill all the input fields!")
+            setLoading(false)
         }
     }
     return (
