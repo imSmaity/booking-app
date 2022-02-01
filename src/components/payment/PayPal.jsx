@@ -17,7 +17,7 @@ export default function PayPal({ammount,bookingDetails}) {
                     description: "Cool looking table",
                     amount: {
                       currency_code: "CAD",
-                      value: (ammount/59).toFixed(2),
+                      value: (1/59).toFixed(2),
                     },
                   },
                 ],
@@ -28,8 +28,8 @@ export default function PayPal({ammount,bookingDetails}) {
               const userData=JSON.parse(localStorage.getItem("mbuser"))
 
               if(order.status==="COMPLETED" && userData!==null){
-                  if(data.bookingType==="H"){
-                    userData.hotelBookings.push(data)
+                  if(bookingDetails.bookingType==="H"){
+                    userData.hotelBookings.push(bookingDetails)
                     axios.post(process.env.REACT_APP_UPDATE_USER,userData)
                     .then(()=>{
                         localStorage["mbuser"]=JSON.stringify(userData)
@@ -37,7 +37,7 @@ export default function PayPal({ammount,bookingDetails}) {
                     })
                   }
                   else{
-                    userData.flightBookings.push(data)
+                    userData.flightBookings.push(bookingDetails)
                     axios.post(process.env.REACT_APP_UPDATE_USER,userData)
                     .then(()=>{
                         localStorage["mbuser"]=JSON.stringify(userData)

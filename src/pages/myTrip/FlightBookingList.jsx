@@ -15,6 +15,7 @@ function FlightBookingList() {
     return(
         <center>
             {
+                flight.length!==0?
                 flight.reverse().map((val,index)=>{
                     return(
                         <div className='row container hr' key={index}>
@@ -57,7 +58,8 @@ function FlightBookingList() {
                             </div>
                         </div>
                     )
-                })
+                }):
+                <div>No tickets have been booked yet</div>
             }
         </center>
     );

@@ -9,9 +9,9 @@ function Home() {
             <div className='col-12 hac'>
                 <Header/>
             </div>
-            <div className='col-12'>
+            <center className='col-12'>
                 <SearchFrame/>
-            </div>
+            </center>
         </div>
     )
 }

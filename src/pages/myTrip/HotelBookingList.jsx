@@ -13,6 +13,7 @@ function HotelBookingList() {
     return(
         <center>
             {
+                hotel.length!==0?
                 hotel.reverse().map((val,index)=>{
                     return(
                         <div className='row container hr' key={index}>
@@ -42,7 +43,8 @@ function HotelBookingList() {
                             </div>
                         </div>
                     )
-                })
+                }):
+                <div>No hotels booked yet</div>
             }
         </center>
      );

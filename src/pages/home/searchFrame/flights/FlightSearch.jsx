@@ -26,8 +26,8 @@ export default function FlightSearch({travelAirport,destinationAirport,setTicket
     
     return (
         <>
-            <div className="col-md-4 col-12">
-                <label  htmlFor="from" className="dropdown-toggle" role="button" data-bs-toggle="dropdown" >FROM</label>
+            <div className="col-lg-4 col-12">
+                <label  htmlFor="from" className="dropdown-toggle" role="button" data-bs-toggle="dropdown" id='tfs'>FROM</label>
                     <FROM 
                         travelAirport={travelAirport} 
                         displayTravelAirport={displayTravelAirport}
@@ -38,8 +38,8 @@ export default function FlightSearch({travelAirport,destinationAirport,setTicket
                 </div>
             </div>
 
-            <div className="col-md-3 col-12">
-                <label  htmlFor="to" className="dropdown-toggle" role="button" data-bs-toggle="dropdown" >TO</label>
+            <div className="col-lg-3 col-12">
+                <label  htmlFor="to" className="dropdown-toggle" role="button" data-bs-toggle="dropdown" id='tfs'>TO</label>
                     <TO
                         destinationAirport={destinationAirport}
                         displayDestinationAirport={displayDestinationAirport}
@@ -50,14 +50,14 @@ export default function FlightSearch({travelAirport,destinationAirport,setTicket
                 </div>
             </div>
         
-            <div className="col-md-3 col-12">
-                <label  htmlFor="dept">DEPARTURE:</label>
+            <div className="col-lg-3 col-12">
+                <label  htmlFor="dept" id='tfs'>DEPARTURE:</label>
                 <div className='mt-2'>
                     <DatePicker selected={date.travelDate} id='dateset'  minDate={moment().toDate()} onChange={(e)=>setDate({...date,travelDate:e})}/>
                 </div>
             </div>
-            <div className="col-md-2 col-12">
-                <label  htmlFor="dept">CLASS:</label>
+            <div className="col-lg-2 col-12">
+                <label  htmlFor="dept" id='tfs'>CLASS:</label>
                 <div className='mt-2'>
                     <select name="class" className='date' id="dateset" onChange={(e)=>setTicketClass(e.target.value)}>
                         <option value="Economy">Economy</option>

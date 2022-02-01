@@ -50,17 +50,20 @@ function Flights() {
         )
     },[path.searchId])
     
-    useEffect(()=>{
-        if(sort === 'duration'){
-            setFlightsData(durationWiseSort(flightsData,'flightDuration'))
-        }
-        else if(sort === 'lTOh'){
+    function sortByPrice(e){
+        setSort(e.target.value)
+        if(e.target.value === 'lTOh'){
             setFlightsData(priceLHWiseSort(flightsData,'baseFare'))
         }
-        else if(sort === 'hTOl'){
+        else if(e.target.value === 'hTOl'){
             setFlightsData(priceHLWiseSort(flightsData,'baseFare'))
         }
-    },[sort,flightsData])
+    }
+
+    function durationSort(d){
+        setSort(d)
+        setFlightsData(durationWiseSort(flightsData,'flightDuration'))
+    }
 
     return (
         <>
@@ -70,7 +73,7 @@ function Flights() {
             </div>
             <div className='12'>
                 <center>
-                    <SortBy sort={sort} setSort={setSort}/>
+                    <SortBy sort={sort} sortByPrice={sortByPrice} durationSort={durationSort}/>
                 </center>
             </div>
             <div className='col-12'>

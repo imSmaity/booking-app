@@ -71,8 +71,7 @@ export default function SearchFrame() {
                 }
                 </div>
             </div>
-            <div className="col-5"></div>
-            <div className='col-2 searb'>
+            <div className='col-12 searb'>
             {
                 searchType==="flights"?
                 <Link to={
@@ -96,7 +95,6 @@ export default function SearchFrame() {
             }
                 
             </div>
-            <div className="col-5"></div>
         </div>
     )
 }

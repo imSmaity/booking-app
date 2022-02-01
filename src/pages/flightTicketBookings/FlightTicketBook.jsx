@@ -36,7 +36,8 @@ function getPriceSummary(adult,child,_class,price){
 
 export const Passenger=createContext("")
 function FlightTicketBook() {
-    const [flightDetails,setFlightDetails]=useState(null)
+    const path=useParams()
+    const [flightDetails,setFlightDetails]=useState({class:'',baseFare:''})
     const [loading,setLoading]=useState(false)
     const [info,setInfo]=useState(false)
     
@@ -46,8 +47,6 @@ function FlightTicketBook() {
     const [priceSummary,setPriceSummary]=useState({adult:'',child:'',adultBaseFare:'',childBaseFare:'',serviceFee:'',userFee:'',GST:'',donation:'',totalAmmount:''})
 
     const [bookingDetails,setBookingDetails]=useState({})
-
-    const path=useParams()
 
     useEffect(()=>{
         axios.post(process.env.REACT_APP_FLIGHT_SEARCH,{searchId:path.searchId,flightId:path.flightId})

@@ -1,5 +1,23 @@
 .btnls button{
     border-radius: .5vh;
-    margin: .5vh .5vh;
     border: none;
 }
+#ts{
+    font-weight: bold;
+    text-align: left;
+}
+
+#sl{
+    float: right;
+}
+#ddd{
+    text-decoration: none;
+    margin-right: 2px;
+    color: black;
+}
+#ddd:hover{
+    border-bottom: 1px solid blue;
+}
+/* div{
+    border: 1px solid greenyellow;
+} */

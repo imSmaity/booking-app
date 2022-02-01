@@ -11,14 +11,15 @@ import { GuestDetails } from '../../routes/PageRoutes'
 
 
 function BookHotel() {
+    const path=useParams()
     const {guest}=useContext(GuestDetails)
-    const [hotelData,setHotelData]=useState(null)
+    const [hotelData,setHotelData]=useState({gPerRoom:'',price:0})
     const [loading,setLoading]=useState(false)
     const [proceedToPayment,setToPayment]=useState(false)
     const [roomPrice,setRoomPrice]=useState({room:'',night:'',price:'',tax:'',payable:''})
     const [bookingDetails, setBookingDetails]=useState(null)
 
-    const path=useParams()
+    
     const query=JSON.parse(path.query)
 
     useEffect(()=>{
@@ -29,11 +30,11 @@ function BookHotel() {
         })
     },[path])
 
-    useEffect(()=>{
-        if(loading){
-            setBookingDetails({bookingType:"H",bookingDate:new Date().toDateString() ,hotelData, guest, roomPrice, query})
-        }
-    },[guest,roomPrice,loading,hotelData,query])
+    // useEffect(()=>{
+    //     if(loading){
+    //         setBookingDetails({bookingType:"H",bookingDate:new Date().toDateString() ,hotelData, guest, roomPrice, query})
+    //     }
+    // },[guest,roomPrice,loading,hotelData,query])
 
     useEffect(()=>{
 
@@ -72,7 +73,7 @@ function BookHotel() {
         }
         return state
     }
-
+   
     return (
         <div className='row'>
             {
@@ -99,6 +100,8 @@ function BookHotel() {
                                 </center>
                                 <button type='button' style={{marginLeft:'9vh'}} className='mt-2' onClick={
                                     ()=>{
+            
+                                        setBookingDetails({bookingType:"H",bookingDate:new Date().toDateString() ,hotelData, guest, roomPrice, query})
                                         setToPayment( validation())
                                     }
                                 }>Proceed To Payment Options</button>

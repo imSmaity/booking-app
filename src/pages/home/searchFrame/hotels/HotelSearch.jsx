@@ -18,8 +18,8 @@ export default function HotelSearch({hotelsBookingCity}) {
 
     return (
         <>
-            <div className="col-sm-4 col-12">
-                <label  htmlFor="from" className="dropdown-toggle" role="button" data-bs-toggle="dropdown" >CITY</label>
+            <div className="col-lg-4 col-12">
+                <label  htmlFor="from" className="dropdown-toggle" role="button" data-bs-toggle="dropdown" id='tfs'>CITY</label>
                 <ul className="dropdown-menu" >
                     <li>
                     {
@@ -47,14 +47,14 @@ export default function HotelSearch({hotelsBookingCity}) {
                     
             </div>
         
-            <div className="col-sm-4 col-12">
-                <label  htmlFor="dept">CHECK-IN:</label>
+            <div className="col-lg-4 col-12">
+                <label  htmlFor="dept" id='tfs'>CHECK-IN:</label>
                 <div className='mt-2'>
                     <DatePicker selected={date.checkInDate} id='dateset'  minDate={moment().toDate()} onChange={(e)=>setDate({...date,checkInDate:e})}/>
                 </div>
             </div>
-            <div className="col-sm-4 col-12">
-                <label  htmlFor="dept">CHECK-OUT:</label>
+            <div className="col-lg-4 col-12">
+                <label  htmlFor="dept" id='tfs'>CHECK-OUT:</label>
                 <div className='mt-2'>
                     <DatePicker selected={date.checkOutDate} id='dateset'  minDate={moment().toDate()} onChange={(e)=>setDate({...date,checkOutDate:e})}/>
                 </div>

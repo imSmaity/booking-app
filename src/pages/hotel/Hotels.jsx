@@ -40,14 +40,16 @@ function Hotels() {
         })
     },[path])
 
-    useEffect(()=>{
-        if(sort==='lTOh'){
+
+    function sortByPrice(e){
+        setSort(e.target.value)
+        if(e.target.value==='lTOh'){
             setHotelsData(priceLHWiseSort(hotelsData,'price'))
         }
-        else if(sort==='hTOl'){
+        else if(e.target.value==='hTOl'){
             setHotelsData(priceHLWiseSort(hotelsData,'price'))
         }
-    },[sort,hotelsData])
+    }
 
     return (
         <div className='row'>
@@ -56,7 +58,7 @@ function Hotels() {
             </div>
             <div className='col-12'>
                 <center>
-                    <SortBy sort={sort} setSort={setSort}/>
+                    <SortBy sort={sort} sortByPrice={sortByPrice}/>
                 </center>
             </div>
             <div className='col-12'>

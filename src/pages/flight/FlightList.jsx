@@ -10,7 +10,7 @@ function FlightList({loading,flightsData,path}){
                 if(flight.class === path.classId){
                     return (
                         <div className="row container fl" key={index}>
-                            <div className="col-3" key={index}>
+                            <div className="col-3" >
                                 <div>
                                     <strong>{flight.companyName}</strong>
                                 </div>
@@ -40,7 +40,7 @@ function FlightList({loading,flightsData,path}){
                     )
                 }
                 else{
-                    return <div></div>
+                    return <div key={index}></div>
                 }
             })
             

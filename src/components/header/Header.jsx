@@ -14,20 +14,18 @@ export default function Header() {
             <Link to="/"  className='col-4' style={{textDecoration:'none'}}>
                 <h3 >myDestination</h3>
             </Link>
-            <div className='col-2'>
-                <Link to={'/my_trip'} >My trip</Link>
+            <div className='col-lg-5 col-3' id='ts'>
+                <Link to={'/my_trip'} id='ddd'>My trip</Link>
             </div>
                 {
                     state.payload?
                     <>
-                        <div  className='col-3 btnls'>
-                            <Link to={"/profile"}><div style={{textAlign:'right',fontWeight:'bold'}}>{state.name}</div></Link>
-                        </div>
-                        <div  className='col-3 btnls'>
-                            <button type='button' onClick={logout}>Logout</button>
+                        <div  className='col-lg-2 col-4 btnls' id='ts'>
+                            <Link to={"/profile"} id='ddd'>{state.name}</Link>
+                            <button type='button' onClick={logout} id='sl'>Logout</button>
                         </div>
                     </>:
-                    <div  className='col-6 btnls'>
+                    <div  className='col-lg-2 col-5 btnls'>
                         <Link to={"/login"}><button type='button '>Login</button></Link>
                         <Link to={"/signup"}><button type='button' >Signup</button></Link>
                     </div>
