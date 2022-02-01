@@ -19,7 +19,7 @@ function FlightBookingList() {
                 flight.reverse().map((val,index)=>{
                     return(
                         <div className='row container hr' key={index}>
-                            <div className='col-3'>
+                            <div className='col-md-3 col-12'>
                                 <strong><h4>{new Date(val.query.travelDate).toDateString()}</h4></strong>
                             </div>
                             <div className='col-2' style={{textAlign:'right'}}>
@@ -29,21 +29,21 @@ function FlightBookingList() {
                                 </div>
                             </div>
                             <div className='col-1'>to</div>
-                            <div className='col-2' style={{textAlign:'left'}}>
+                            <div className='col-2 '  style={{textAlign:'left'}}>
                                 <div>
                                     {val.flightDetails.destinationAirport.sName}
                                     <div>{val.flightDetails.departureTime}</div>
                                 </div>
                             </div>
                 
-                            <div className='col-2'>
+                            <div className='col-md-2 col-4'>
                                 <div>
                                     {val.flightDetails.companyName}
                                     {/* <div className='mt-2 confi'>CONFIRMED</div> */}
                                     <div className='mt-2'>{val.flightDetails._id}</div>
                                 </div>
                             </div>
-                            <div className='col-2 mt-3' id='tash'>
+                            <div className='col-md-2 col-12 mt-3' id='tash'>
                                 <div id='book'>{`Booked on: ${val.bookingDate}`}</div>
                             </div>
                             <div className='col-12 sbs'>

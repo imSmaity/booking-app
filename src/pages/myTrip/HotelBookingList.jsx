@@ -17,19 +17,19 @@ function HotelBookingList() {
                 hotel.reverse().map((val,index)=>{
                     return(
                         <div className='row container hr' key={index}>
-                            <div className='col-4' id='tash'>
+                            <div className='col-md-4 col-12' id='tash'>
                                 <div id='shh'>{val.hotelData.name}</div>
                                 <div>{val.hotelData.address}</div>
                             </div>
-                            <div className='col-3' id='tash' >
+                            <div className='col-md-3 col-6' id='tash' >
                                 <div id='shh'>Check In</div>
                                 <div>{new Date(val.query.checkInDate).toDateString()}</div>
                             </div>
-                            <div className='col-3' id='tash'>
+                            <div className='col-md-3 col-6' id='tash'>
                                 <div id='shh'>Check Out</div>
                                 <div>{new Date(val.query.checkOutDate).toDateString()}</div>
                             </div>
-                            <div className='col-2 mt-3' id='tash'>
+                            <div className='col-md-2 col-12 mt-3' id='tash'>
                                 <div id='book'>{`Booked on: ${val.bookingDate}`}</div>
                             </div>
                             <div className='col-12 sbs'>

@@ -12,6 +12,7 @@ import BookHotel from './hotelBooking/BookHotel'
 import ConfirmTicket from './flightTicketBookings/confirmTicket/ConfirmTicket'
 import ConfirmHotelBooking from './hotelBooking/confirmHotelBook/ConfirmHotelBooking'
 import MyTrip from './myTrip/MyTrip'
+import Profile from './profile/Profile'
 
 
 export {
@@ -28,5 +29,6 @@ export {
     FlightTicketBook,
     ConfirmTicket,
     ConfirmHotelBooking,
-    MyTrip
+    MyTrip,
+    Profile
 }

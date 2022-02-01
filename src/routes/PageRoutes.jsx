@@ -13,7 +13,8 @@ import {
     BookHotel,
     ConfirmTicket,
     ConfirmHotelBooking,
-    MyTrip
+    MyTrip,
+    Profile
 } from '../pages/pages'
 import {BrowserRouter, Route, Routes, useNavigate} from 'react-router-dom'
 import reducer, { initialstate } from '../hooks/UseReducer'
@@ -50,6 +51,7 @@ function PageRoutes() {
                             <Route path="admin" element={<Admin/>}/>
                             <Route path="my_trip" element={state.payload? <MyTrip/>:<Redirect to='/login'/>}/>
                             <Route path="ticket_confirm" element={state.payload?<ConfirmTicket/>:<Redirect to='/login'/>}/>
+                            <Route path="profile" element={state.payload?<Profile/>:<Redirect to='/login'/>}/>
                             <Route path="hotel_book_confirm" element={state.payload?<ConfirmHotelBooking/>:<Redirect to='/login'/>}/>
                             <Route path="admin/hotelsDB" element={<HotelDataStore/>}/>
                             <Route path="hotels/:searchId/:query" element={<Hotels/>}/>
@@ -57,7 +59,7 @@ function PageRoutes() {
                             <Route path="hotels/:searchId/:query/:hotelId" element={<RoomSelect/>}/>
                             <Route path="flights/:classId/:searchId/:query/:flightId" element={state.payload? <FlightTicketBook/>:<Redirect to='/login'/>}/>
                             <Route path="hotels/:searchId/:query/:hotelId/payment" element={state.payload? <BookHotel/>:<Redirect to='/login'/>}/>
-                            
+                            <Route path="*" element={<h1>Page Not Found</h1>}/>
                         </Routes>
                     </GuestDetails.Provider>
                 </InputDate.Provider>

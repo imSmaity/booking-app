@@ -2,8 +2,10 @@ import React from 'react'
 
 export default function Loading() {
     return (
-        <div className='mt-5'>
-            Loading...
+        <div className="text-center">
+            <div className="spinner-border spinner-border-sm" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
         </div>
     )
 }
