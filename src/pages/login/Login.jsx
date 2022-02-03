@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Loading } from '../../components/components'
 import { UserState } from '../../routes/PageRoutes'
@@ -7,20 +7,22 @@ import { UserState } from '../../routes/PageRoutes'
 export default function Login() {
     const {dispatch}=useContext(UserState)
     const [loading,setLoading]=useState(false)
-    const email=useRef(null)
-    const password=useRef(null)
+    const [user,setUser]=useState({email:'admin@gmail.com',password:'adminadmin'})
     const navigate=useNavigate()
+    function changeData(e){
+        setUser({...user,[e.target.name]:e.target.value})
+    }
 
     const login=()=>{
-        if(email.current.value!=="" && password.current.value!==""){
-            axios.post(process.env.REACT_APP_SEARCH_USER_URL,{email:email.current.value})
+        if(user.email!=="" && user.password!==""){
+            axios.post(process.env.REACT_APP_SEARCH_USER_URL,{email:user.email})
             .then(
                 (res)=>{
                     if(res.data!==""){
-                        if(res.data.password===password.current.value){
+                        if(res.data.password===user.password){
                             const {name,email,flightBookings,hotelBookings}=res.data
-                            const user={name,email,flightBookings,hotelBookings}
-                            localStorage.setItem('mbuser',JSON.stringify(user))
+                            const userData={name,email,flightBookings,hotelBookings}
+                            localStorage.setItem('mbuser',JSON.stringify(userData))
                             dispatch({type:"USER",name,payload:true})
                             setLoading(false)
                             navigate('/')
@@ -49,8 +51,8 @@ export default function Login() {
                 
                 <div className="col-12 mt-4">
                     <center>
-                        <div  className='mt-2'><input type='email' placeholder='Enter your email' ref={email}/></div>   
-                        <div className='mt-2'><input type='password' placeholder='Enter your password' ref={password} /></div>
+                        <div  className='mt-2'><input type='email' name='email' value={user.email} placeholder='Enter your email' onChange={e=>changeData(e)}/></div>   
+                        <div className='mt-2'><input type='password' name='password' value={user.password} placeholder='Enter your password' onChange={e=>changeData(e)} /></div>
                         <div><Link to={"/forgot_password"}>Forgot Password?</Link></div>
                         <div>Don't have an account? <Link to={"/signup"}>Sign up</Link></div>
                         {
