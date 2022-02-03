@@ -55,15 +55,18 @@ export default function Login() {
                         <div>Don't have an account? <Link to={"/signup"}>Sign up</Link></div>
                         {
                             !loading?
-                            <button 
-                                type="submit" 
-                                className='mt-4' 
-                                onClick={()=>{
-                                    setLoading(true)
-                                    login()
-                                }}>
-                                Login
-                            </button>:
+                            <>
+                                <button 
+                                    type="submit" 
+                                    className='mt-4' 
+                                    onClick={()=>{
+                                        setLoading(true)
+                                        login()
+                                    }}>
+                                    Login
+                                </button> 
+                                <button type='button' className='mt-4 ms-3' onClick={()=>{navigate(-1)}}>Cancel</button>
+                            </>:
                             <button className='mt-4'><Loading/></button>
                         }
                     </center>
