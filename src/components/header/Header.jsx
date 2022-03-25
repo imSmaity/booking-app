@@ -12,7 +12,7 @@ export default function Header() {
     return (
         <div className='row'>
             <Link to="/"  className='col-4' style={{textDecoration:'none'}}>
-                <h3 >myDestination</h3>
+                <h3 id='brand'>myDestination</h3>
             </Link>
             <div className='col-lg-5 col-3' id='ts'>
                 <Link to={'/my_trip'} id='ddd'>My trip</Link>

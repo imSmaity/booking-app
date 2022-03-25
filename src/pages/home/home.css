@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 .hac{
-    background-color:orange ;
+    background: rgb(190,189,249);
+background: linear-gradient(90deg, rgba(190,189,249,1) 0%, rgba(61,219,231,1) 100%);
 }
-/* div{
-    border: 1px solid green;
-} */
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #bebdf97a;
+}

@@ -7,10 +7,10 @@ function HotelInfo({hotelData}) {
     const date=JSON.parse(useParams().query)
     
     return (
-        <div className='row container mr mt-3 '>
+        <div className='row mr mt-3 p-2'>
             <div className='col-12 ab'>HOTEL INFO</div>
             <div className='col-md-4 col-12'>
-                <img src={hotelData.image} className=' img-fluid' alt="hotel" />
+                <img src={hotelData.image} className=' img-fluid' style={{borderRadius:'1vh'}} alt="hotel" />
             </div>
             <div className='col-md-8 col-12 mt-2 '>
                 <div className='bo'>{hotelData.name}</div>

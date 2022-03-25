@@ -30,11 +30,6 @@ function BookHotel() {
         })
     },[path])
 
-    // useEffect(()=>{
-    //     if(loading){
-    //         setBookingDetails({bookingType:"H",bookingDate:new Date().toDateString() ,hotelData, guest, roomPrice, query})
-    //     }
-    // },[guest,roomPrice,loading,hotelData,query])
 
     useEffect(()=>{
 
@@ -75,52 +70,54 @@ function BookHotel() {
     }
    
     return (
-        <div className='row'>
-            {
-                loading?
-                <>
-                    <div className="col-12 hac">
-                        <Header/>
-                    </div>
-                    <div className='col-md-8 col-12'>
-                        <HotelInfo hotelData={hotelData}/>
-                    </div>
-                    <div className='col-md-4 col-12'>
-                        <PriceSummary roomPrice={roomPrice}/>
-                    </div>
-                    <div className='col-12'>
-                        {
-                            proceedToPayment?
-                            <div id='ed' className='mr mt-3 mr ab'>Guest Details
-                                <span  onClick={()=>setToPayment(false)} style={{color:'blue'}}>edit</span>
-                            </div>:
-                            <>
-                                <center>
-                                    <GuestsDetails/>
-                                </center>
-                                <button type='button' style={{marginLeft:'9vh'}} className='mt-2' onClick={
-                                    ()=>{
-            
-                                        setBookingDetails({bookingType:"H",bookingDate:new Date().toDateString() ,hotelData, guest, roomPrice, query})
-                                        setToPayment( validation())
-                                    }
-                                }>Proceed To Payment Options</button>
-                            </>
-                        }
-                        
-                    </div>
-                    <div className="col-12">
-                    {
-                        proceedToPayment?
+        <div className='row mb-3'>
+            <div className="col-12 hac">
+                <Header/>
+            </div>
+            <div className='col-12'>
+                {
+                    loading?
+                    <div className='row'>
+                        <div className='col-md-8 col-12'>
+                            <HotelInfo hotelData={hotelData}/>
+                        </div>
+                        <div className='col-md-4 col-12'>
+                            <PriceSummary roomPrice={roomPrice}/>
+                        </div>
+                    </div>:
+                    <div>Loading...</div>
+                }
+            </div>
+            <div className='col-12'>
+                {
+                    proceedToPayment?
+                    <div id='ed' className='mr mt-3 mr ab p-3'>Guest Details
+                        <span  onClick={()=>setToPayment(false)} style={{color:'blue'}}>edit</span>
+                    </div>:
+                    <>
                         <center>
-                            <Payment bookingDetails={bookingDetails}/>
-                        </center>:
-                        <div className='mr mt-3 ab'>Payment Options</div>
-                    }
-                    </div>
-                </>:
-                <div>Loading...</div>
+                            <GuestsDetails/>
+                        </center>
+                        <button type='button' style={{marginLeft:'2vh'}} className='btn btn-primary btn-sm mt-2' onClick={
+                            ()=>{
+    
+                                setBookingDetails({bookingType:"H",bookingDate:new Date().toDateString() ,hotelData, guest, roomPrice, query})
+                                setToPayment( validation())
+                            }
+                        }>Proceed To Payment Options</button>
+                    </>
+                }
+                
+            </div>
+            <div className="col-12">
+            {
+                proceedToPayment?
+                <center>
+                    <Payment bookingDetails={bookingDetails}/>
+                </center>:
+                <div className='mr mt-4 ab p-3'>Payment Options</div>
             }
+            </div>    
             
         </div>
     )

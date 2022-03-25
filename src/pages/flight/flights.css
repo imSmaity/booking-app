@@ -1,20 +1,22 @@
 .fl{
-    border: 1px solid rgba(73, 71, 71, 0.473);
+    border: 1px solid rgba(73, 71, 71, 0.596);
     border-radius: .5vh;
     margin-top: 5vh;
     padding: 2vh;
-    background-color: rgba(169, 169, 169, 0.178);
+    background-color: rgba(252, 248, 248, 0.466);
 }
 .fl button{
     margin-top: 3vh;
-    background-color: rgb(252, 190, 77);
 }
 #sortDB{
     border: none;
     background-color: white;
 }
 .sortBox{
-    background-color: rgba(169, 169, 169, 0.315);
+    background-color: rgba(252, 248, 248, 0.466);
     border-radius: .5vh;
     font-size: 2vh;
+}
+.fl button:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

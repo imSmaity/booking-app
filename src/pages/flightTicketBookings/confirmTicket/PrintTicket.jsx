@@ -10,7 +10,7 @@ export default function PrintTicket() {
     return (
 
         <div className='row container'>
-            <h4 className='col-12 trs'>myDestination</h4>
+            <h4 className='col-12 trs' style={{fontFamily: `'Inspiration', cursive`}}>myDestination</h4>
             <h5 className='col-12 ths'>{`Flight Ticket - ${ticket.flightDetails.travelAirport.city} to ${ticket.flightDetails.destinationAirport.city} (${ticket.flightDetails.class})`}</h5>
             <strong className='col-12'>
                 <div className='row tabTr'>

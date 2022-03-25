@@ -33,7 +33,7 @@ function FlightList({loading,flightsData,path}){
                             </div>
                             <div className="col-2">
                                 <Link to={flight.trackingCode}>
-                                    <button type='button'>BOOK</button>
+                                    <button type='button' className="btn btn-warning btn-sm">BOOK</button>
                                 </Link>
                             </div>
                         </div>

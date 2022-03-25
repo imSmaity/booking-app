@@ -4,7 +4,7 @@ export default function ConfirmPage({ticket}) {
 
     return (
         <div className='row container'>
-            <h4 className='col-6 trs mt-3 ths p-2'>myDestination</h4>
+            <h4 className='col-6 trs mt-3 ths p-2' style={{fontFamily: `'Inspiration', cursive`}}>myDestination</h4>
             <h5 className='col-6 mt-4 ths p-2' style={{textAlign:'right'}}>Hotel Confirmation Voucher</h5>
             <div className='col-12 p-2 m-2 tabTr'>{`Guest Name: ${ticket.guest[0].fname} ${ticket.guest[0].lname}`}</div>
             <h5 className='col-12'>{ticket.hotelData.name}</h5>

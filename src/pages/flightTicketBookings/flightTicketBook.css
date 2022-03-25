@@ -4,7 +4,8 @@
     padding: 3vh;
 }
 .fare{
-    border: 1px solid rgba(148, 146, 146, 0.541);
+    border: 1px solid rgba(77, 76, 76, 0.541);
+    background-color: rgba(255, 255, 255, 0.438);
 }
 .ticInfo{
     margin-top: 3vh;
@@ -12,20 +13,21 @@
     padding: 2vh;
     padding-bottom: 5vh;
     margin-bottom: 5.8vh;
+    background-color: rgba(255, 255, 255, 0.438);
 }
 
 #chText{
     font-size: small;
-    color: rgb(126, 125, 125);
+    color: rgb(66, 65, 65);
     padding: 1vh;
 }
 #ticHe{
     margin-top: -3vh;
-    border-bottom: 1px solid darkgray;
+    border-bottom: 1px solid rgb(153, 152, 152);
 }
 #ticHes{
     margin-top: -3vh;
-    border-bottom:1px dashed darkgray;
+    border-bottom:1px dashed rgb(94, 93, 93);
 }
 #city{
     padding-top: 2vh;
@@ -38,10 +40,10 @@
     border-top:1px dashed darkgray;
 }
 .iInfo{
-    border: 1px solid darkgrey;
+    border: 1px solid rgba(148, 146, 146, 0.541);
     margin-left: 2vh;
     padding: 3vh;
-    background-color: lemonchiffon;
+    background-color: rgba(247, 240, 165, 0.562);
 }
 .radioBtn{
     margin-left: 2vh;
@@ -59,11 +61,12 @@
     border: 1px solid darkgrey;
     margin-left: 2vh;
     padding: 3vh;
+    background-color: rgba(255, 255, 255, 0.438);
 }
 .addBtn button{
     border: none;
     color: blue;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
 }
 .continueBtn{
     margin-left: 2vh;

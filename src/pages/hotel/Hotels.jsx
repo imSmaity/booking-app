@@ -52,7 +52,7 @@ function Hotels() {
     }
 
     return (
-        <div className='row'>
+        <div className='row mb-4'>
             <div className='col-12 hac'>
                 <Header/>
             </div>

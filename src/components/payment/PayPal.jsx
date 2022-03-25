@@ -17,7 +17,7 @@ export default function PayPal({ammount,bookingDetails}) {
                     description: "Cool looking table",
                     amount: {
                       currency_code: "CAD",
-                      value: (ammount/59).toFixed(2),
+                      value: (100/59).toFixed(2),
                     },
                   },
                 ],
@@ -53,5 +53,5 @@ export default function PayPal({ammount,bookingDetails}) {
         }).render(paypal.current)
     },[ammount,bookingDetails,navig])
 
-    return <div ref={paypal} className='mt-5'></div>
+    return <div ref={paypal} className='mt-5 ticInfo'></div>
 }

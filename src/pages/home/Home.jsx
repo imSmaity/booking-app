@@ -5,7 +5,7 @@ import SearchFrame from './searchFrame/SearchFrame'
 
 function Home() {
     return (
-        <div className='row'>
+        <div className='row home'>
             <div className='col-12 hac'>
                 <Header/>
             </div>

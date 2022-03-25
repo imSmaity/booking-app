@@ -22,31 +22,25 @@ function RoomSelect() {
 
 
     return (
-        <div className='row'>
+        <div className='row mb-4'>
         {
             loading?
             <>
                 <div className='col-12 hac'>
                     <Header/>
                 </div>
-                <div className='col-12 mt-3'>
-                    <h4 className="col-12 "><strong>{hotelData.name}</strong></h4>
-                    <div className="col-12">{hotelData.address}</div>
-                </div>
                 <div className='col-12'>
                     <center>
-                        <div className='row container select'>
-                            <RoomType hotelData={hotelData}/>
-                        </div>
-                    </center>
-                </div>
-                <div className="col-12">
-                    <center><Amenities/></center>
-                </div>
-                <div className="col-12">
-                    <center>
-                        <div className='row container select'>
-                            <HotelPolicies/>
+                        <div className='row container-fluid'>
+                            <div className='col-12 mt-4' style={{textAlign:'left'}}>
+                                <h4 className="col-12 "><strong>{hotelData.name}</strong></h4>
+                                <div className="col-12">{hotelData.address}</div>
+                            </div>
+                            <div className='col-12'>
+                                <RoomType hotelData={hotelData}/>
+                            </div>
+                            <div className="col-12"><Amenities/></div>
+                            <div className="col-12 select"><HotelPolicies/></div>
                         </div>
                     </center>
                 </div>

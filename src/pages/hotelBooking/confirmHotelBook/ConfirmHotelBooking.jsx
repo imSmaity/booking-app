@@ -24,7 +24,7 @@ function ConfirmHotelBooking() {
                 <div className='col-12 hac'><Header/></div>
                 <h5 className='col-12 m-2'>Booking Confirmed</h5>
                 <div className='col-12 m-3'>
-                    <button onClick={handlePrint}>Print</button>
+                    <button onClick={handlePrint} className='btn btn-warning'>Print</button>
                 </div>
                 <div className='col-12' ref={componentRef}><ConfirmPage ticket={ticket}/></div>
             </>:

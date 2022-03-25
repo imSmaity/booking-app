@@ -19,7 +19,7 @@ function GuestsDetails() {
         setGuest(arr)
     }
     return (
-        <div className='row mr mt-5 pay container-fluid'>
+        <div className='row mr mt-5 pay container-fluid p-2'>
             <div className="col-12 ar  ab">GUEST DETAILS</div>
             {
                 guest.map((guestNumber,index)=>{

@@ -1,8 +1,16 @@
 .select{
     margin-top: 5vh;
     border: 1px solid black;
-    border-radius: 2vh;
+    border-radius: 1vh;
+    background-color: rgba(252, 248, 248, 0.466);
 }
 .ml{
     text-align: left;
+}
+.rts{
+    font-size: large;
+}
+
+#hphoto{
+    border-radius: 1vh;
 }

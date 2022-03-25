@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paypal } from '../../components/components'
+import { Paypal, TestPaymentDetails } from '../../components/components'
 
 
 function PaymentDetails({loading,info,bookingDetails}) {
@@ -13,6 +13,7 @@ function PaymentDetails({loading,info,bookingDetails}) {
                         info?
                         <>
                             <div id='tdH'>PAYMENT DETAILS</div>
+                            <TestPaymentDetails/>
                             <Paypal ammount={bookingDetails.priceSummary.totalAmmount} bookingDetails={bookingDetails}/>
                         </>:
                         <div>PAYMENT DETAILS</div>

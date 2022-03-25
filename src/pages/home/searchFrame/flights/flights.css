@@ -18,9 +18,14 @@
 #dateset{
     font-weight: bold;
     width: 25vh;
+    border-radius: 1vh;
+    background-color: rgba(250, 235, 215, 0);
 }
 #tfs{
     font-size: 3vh;
-    color: rgba(70, 67, 238, 0.959);
+    color:   rgba(11, 97, 196, 0.952);
     font-weight: bold;
+}
+.date{
+    padding: .4vh;
 }

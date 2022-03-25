@@ -1,7 +1,10 @@
+
 .sfc{
     border-radius: 1vh;
     margin-top: 10vh;
-    background-color:rgba(92, 174, 255, 0.589);
+    background: rgb(190,189,249);
+background: linear-gradient(90deg, rgba(190,189,249,1) 0%, rgba(61,219,231,1) 100%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .btnc{
     text-align: center;
@@ -23,11 +26,12 @@
     border: none;
     font-weight: bold;
     padding: .9vh;
-    border-radius: .5vh;
+    border-radius: 5vh;
     width: 25vh;
+    background-color: yellow;
 }
 #search:hover{
-    background-color: lemonchiffon;
+    background-color: rgba(255, 255, 0, 0.774);
 }
 .date{
     border: 1px solid rgba(34, 33, 33, 0.671);
