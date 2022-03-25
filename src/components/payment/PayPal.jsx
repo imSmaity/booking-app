@@ -17,7 +17,7 @@ export default function PayPal({ammount,bookingDetails}) {
                     description: "Cool looking table",
                     amount: {
                       currency_code: "CAD",
-                      value: (100/59).toFixed(2),
+                      value: (ammount/59).toFixed(2),
                     },
                   },
                 ],
