@@ -3,7 +3,7 @@
 A online online ticket booking app made with MERN stack.
 
 ## Screenshot
-![alt-text](https://i.ibb.co/nQkDb3r/Screenshot-469.png)
+![alt-text](https://i.ibb.co/gPJWchg/Screenshot-572.png)
 
 ## Features
 - Authentication
